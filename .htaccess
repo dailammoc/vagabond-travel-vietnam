@@ -1,0 +1,23 @@
+Options -Indexes
+RewriteEngine on
+
+#other
+RewriteRule \.(css|jpe?g|gif|png|js|swf|php)$ - [L]
+RewriteRule 	^.*$ 						index.php [L]
+RewriteRule 	^enterprise.*$ 						enterprise/index.php [L]
+RewriteRule    ^huong-dan$         			help/tour.php   [L]
+RewriteRule    ^dieu-khoan-su-dung$        		 about/terms.php   [L]
+RewriteRule    ^nhung-cau-hoi-thuong-gap$      		   help/faqs.php   [L]
+RewriteRule    ^dieu-khoan-su-dung$        		 about/terms.php   [L]
+RewriteRule    ^nha-cung-cap$      			 feedback/seller.php [L]
+RewriteRule    ^doanh-nghiep$      			 feedback/enterprise.php [L]
+RewriteRule    ^cong-tac-vien$   			   feedback/corporate.php [L]
+RewriteRule    ^gioi-thieu-51deal$    			   about/us.php [L]
+RewriteRule    ^lien-he-chung-toi$   			    about/contact.php [L]
+RewriteRule    ^doi-tac-lien-ket$			help/partner_contact.php [L]
+RewriteRule    ^diem-thuong$			diem_thuong/index.html [L]
+RewriteRule    ^quy-che-hoat-dong$			about/privacy_active.php [L]
+
+RewriteRule    ^san-pham/(.*)/(.*)$			team.php?id=$1&title=$2 [L]
+RewriteRule    ^dat-hang/(.*)/(.*)$			team/buy.php?id=$1&title=$2 [L]
+   
