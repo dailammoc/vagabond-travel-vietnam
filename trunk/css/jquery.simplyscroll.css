@@ -1,0 +1,76 @@
+/* Container DIV - automatically generated */
+.simply-scroll-container { 
+	position: relative;
+}
+
+/* Clip DIV - automatically generated */
+.simply-scroll-clip { 
+	position: relative;
+	overflow: hidden;
+	z-index: 2;
+}
+
+/* UL/OL/DIV - the element that simplyScroll is inited on
+Class name automatically added to element */
+.simply-scroll-list { 
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+	
+.simply-scroll-list li {
+
+}
+	
+.simply-scroll-list li img {
+
+}
+
+/* Master button styles - note that left and right 
+versions are included although they are not used in this example */
+
+.simply-scroll-btn { cursor:pointer; position:absolute}
+
+.simply-scroll-btn-up {
+	background:url(../images/ico/ico_scrollTop.png) no-repeat; width:16px; height:16px; display:block;
+}
+	
+.simply-scroll-btn-down {
+	background:url(../images/ico/ico_scrollBottom.png) no-repeat; width:16px; height:16px; display:block;
+}
+
+
+/* Custom class modifications - adds to / overrides above
+
+Vertical scroller example, with custom base class */
+
+/* Container DIV */
+.vert { 
+	
+}
+
+/* Clip DIV */
+.vert .simply-scroll-clip {
+	height: 300px;
+}
+
+/* Explicitly set height/width of each list item */
+.vert .simply-scroll-list li {
+
+}
+
+/* Modified button positions, overriding previous styles */
+.vert .simply-scroll-btn-up { 
+	right: 20px;
+	bottom: -40px;
+}
+
+.vert .simply-scroll-btn-down { 
+	right: 0;
+	bottom: -40px;
+}
