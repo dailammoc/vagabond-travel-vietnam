@@ -1,5 +1,5 @@
 <?php
-class Index_Controller {
+class Home_Controller {
 
 	public function __construct()
 	{
@@ -7,9 +7,7 @@ class Index_Controller {
 	}
 	public function index()
 	{
-		
-			//Utility::Redirect(URL_HOME_ENTERPRISE.'/html');
-		
+			include(DIR_VIEW_ENTERPRISE.'/home/home.html');	
 	}
 
 }
