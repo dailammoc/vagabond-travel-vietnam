@@ -29,12 +29,31 @@ class Tour_Controller extends HKL_Controller{
 	public function trongnuoc()
 	{
 		$tour = $this -> tourModel -> getTourByLoaiTour(3);
+		$diemkhoihanh = $this -> tourModel -> getDiemKhoiHanh();
+		$diemkhoihanh = array_combine(Utility::GetColumn($diemkhoihanh,'id'), Utility::GetColumn($diemkhoihanh,'ten_dia_diem'));
+		$diemden = $this -> tourModel -> getDiemDen();
+		$diemden = array_combine(Utility::GetColumn($diemden,'id'), Utility::GetColumn($diemden,'ten_dia_diem'));
 		include(DIR_VIEW_ENTERPRISE.'/tour/trongnuoc.html');
 	}
 	public function chitiet($id)
 	{
 		$tour = $this -> tourModel -> getTourById($id);
+		$loai_tour = $this -> tourModel -> getLoaiTourById($tour['ID_LOAI_TOUR']);
+		$diemkhoihanh = $this -> tourModel -> getDiemKhoiHanhById($tour['id_diem_khoi_hanh']);
+		$diemden = $this -> tourModel -> getDiemDenById($tour['id_diem_den']);
+		$loaiphuongtien = $this -> tourModel -> getLoaiPhuongTien($tour['ID_PHUONG_TIEN']);
 		include(DIR_VIEW_ENTERPRISE.'/tour/chitiet.html');
+	}
+	public function search($diemkhoihanh,$diemden)
+	{
+		$tour = $this -> tourModel -> search($diemkhoihanh, $diemden);
+		if(count($tour) > 0){			
+			$diemkhoihanh = $this -> tourModel -> getDiemKhoiHanh();
+			$diemkhoihanh = array_combine(Utility::GetColumn($diemkhoihanh,'id'), Utility::GetColumn($diemkhoihanh,'ten_dia_diem'));
+			$diemden = $this -> tourModel -> getDiemDen();
+			$diemden = array_combine(Utility::GetColumn($diemden,'id'), Utility::GetColumn($diemden,'ten_dia_diem'));
+		}
+		include(DIR_VIEW_ENTERPRISE.'/tour/search_result.html');
 	}
 }
 ?>
