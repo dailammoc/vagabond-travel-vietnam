@@ -2,7 +2,6 @@
 class LoadModel extends Zend{
 	
 	var $dir ='';
-
 	public function setDir($dir){
 		$this->dir = $dir;
 	}

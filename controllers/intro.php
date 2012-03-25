@@ -1,9 +1,11 @@
 <?php
 class Intro_Controller {
 
+	var $introModel;
 	public function __construct()
 	{
-		//parent::__construct();
+		$this->model->Model('Intro_introModel');
+		$this->introModel = new Intro_Model();
 	}
 	public function index()
 	{

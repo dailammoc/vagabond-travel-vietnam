@@ -8,14 +8,14 @@ $INI = array (
 
     'user' => 'root',
 
-    'pass' => 'root',
+    'pass' => '',
 
     //'name' => '51deal1',
 	//'user' => '192.168.11.53',
 
     //'pass' => '123',
 
-    'name' => '51deal2012',
+    'name' => 'travel',
 
     //'name' => 'db0809dealpro',
     //'name' => '51deal2608',
