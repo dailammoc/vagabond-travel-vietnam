@@ -10,10 +10,8 @@ class Zend
     {
         // include path for Zend Framework
         // alter it accordingly if you have put the 'Zend' folder elsewhere
-
-        ini_set('include_path', 
-        DIR_LIBARAY.'/');
-		//echo  ini_get('include_path');
+        ini_set('include_path', DIR_LIBARAY.'/');
+		
         require_once('Zend/Loader.php');
         
 

@@ -1,0 +1,45 @@
+<?php $this->load->view("header/header.html")?>
+                
+                <div class="content minHeight">
+               
+                <!-- blog tour -->
+                <div class="blogTour">
+                	<h4 class="titleALl">Nhật kí tour</h4>
+                    
+                    <div class="blogDiary">
+                    	<ul>
+                    		<?php foreach($tour as $index => $one){?>
+                    			<li>
+                            		<div class="picDia"><a href="#"><img src="<?php echo DIR_IMG_ENTERPRISE.$one['hinh']?>"  /></a></div>
+                                	<div class="txtDia"><?php echo $one['intro'] ?></div>
+                            	</li>
+                    		<?php }?>                        
+                        </ul>
+                        
+                    </div>
+                    <div class="clr padT10"></div>
+                    <ul class="listTourOther">
+                            <li><a href="#">Aenean. Sed laoreet. Aenean pede. Phasellus porta</a></li>
+                            <li><a href="#">Fusce elit ligula,  Aenean. Sed laoreet. Aenean pede.</a></li>
+                            <li><a href="#">Aenean. Sed laoreet. Aenean pede. Phasellus porta</a></li>
+                            <li><a href="#">Fusce elit ligula,  Aenean. Sed laoreet. Aenean pede.</a></li>
+                    </ul>
+                    
+                    
+                </div>
+                <!-- en blog tour -->
+               
+                
+                </div>
+               
+            
+			</div>
+            <!-- en main left -->
+            
+            <!-- main right -->
+            <?php $this->load->view("menu/right_side.html")?>
+                
+	<!-- en bodymain -->
+    
+    <!-- footer -->
+	<?php $this->load->view ("footer/footer.html")?>

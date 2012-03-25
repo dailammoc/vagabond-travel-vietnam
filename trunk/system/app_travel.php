@@ -4,9 +4,10 @@ define('DIR_ROOT_ENTERPRISE',DIR_PARENT);
 define('DIR_TEMPLATE_ENTERPRISE',DIR_ROOT_ENTERPRISE.'/template');
 define('APPPATH',DIR_PARENT.'/');
 define('DIR_VIEW_ENTERPRISE',DIR_ROOT_ENTERPRISE.'/Views/');
-define('DIR_CSS_ENTERPRISE',URL_HOME_ENTERPRISE.'/static/css/');
-define('DIR_JS_ENTERPRISE',URL_HOME_ENTERPRISE.'/static/lib/');
-define('DIR_IMG_ENTERPRISE',URL_HOME_ENTERPRISE.'/static/images');
+define('DIR_CSS_ENTERPRISE',URL_HOME_ENTERPRISE.'/css/');
+define('DIR_JS_ENTERPRISE',URL_HOME_ENTERPRISE.'/scripts/');
+define('DIR_IMG_ENTERPRISE',URL_HOME_ENTERPRISE.'/images/');
+define('DIR_AJAX_TRAVEL',URL_HOME_ENTERPRISE.'/function/ajax');
 function is_loaded($class = '')
 {
 	static $_is_loaded = array();

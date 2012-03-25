@@ -5,9 +5,10 @@
 <title>:::: VIETNAM TRAVEL ::::</title>
 <link href="css/setup.css" rel="stylesheet" type="text/css" />
 <link href="css/style.css" rel="stylesheet" type="text/css" />
-<script src="scripts/show_flash.js" type="text/javascript"></script>
-
-
+<script>var DIR_AJAX_TRAVEL = "<?php echo DIR_AJAX_TRAVEL ?>";</script>
+<script src="<?php echo DIR_JS_ENTERPRISE ?>show_flash.js" type="text/javascript"></script>
+<script src="<?php echo DIR_JS_ENTERPRISE ?>jquery.min.js" type="text/javascript"></script>
+<script src="<?php echo DIR_JS_ENTERPRISE ?>function.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -30,8 +31,8 @@
     <div class="blogGallery">
     	
       <div class="listGallery">
-        	<div class="picThumb position01"><a href="#"><img src="images/pic/gal01.jpg" /></a></div>
-            <div class="picThumb position02"><a href="#"><img src="images/pic/gal02.jpg" /></a></div>
+        	<div class="picThumb position01"><a id="1" href="#"><img src="images/pic/gal01.jpg" /></a></div>
+            <div class="picThumb position02"><a id="2" href="#"><img src="images/pic/gal02.jpg" /></a></div>
             <div class="picThumb position03"><a href="#"><img src="images/pic/gal03.jpg" /></a></div>
             <div class="picThumb position04"><a href="#"><img src="images/pic/gal04.jpg" /></a></div>
             <div class="picThumb position05"><a href="#"><img src="images/pic/gal05.jpg" /></a></div>
@@ -52,15 +53,15 @@
             <div class="picThumb position20"><a href="#"><img src="images/pic/gal20.jpg" /></a></div>
         </div>
         
-        <div class="boxInfoPic">
-        	<div class="picLarge rotation05"><img src="images/pic/gal03.jpg" /></div>
-        	<div class="picLarge rotation04"><img src="images/pic/gal02.jpg" /></div>
-        	<div class="picLarge rotation03"><img src="images/pic/gal01.jpg" /></div>
+        <div class="boxInfoPic" style="display:none">
+        	<div class="picLarge rotation05"><img id="rotation05"  /></div>
+        	<div class="picLarge rotation04"><img id="rotation04"  /></div>
+        	<div class="picLarge rotation03"><img id="rotation03" /></div>
         	<div class="picLarge contentPic rotation02">
-            	<div class="picThCo"><img src="images/pic/gal03.jpg" /></div>
+            	<div class="picThCo"><img id="rotation02" /></div>
                 <div class="txtCo">
-                	<h4 class="titleCo">Ha Long Bay</h4>
-                    sagittis. Fusce elit ligula, Aenean. Sed laoreet. Aenean pede. Phasellus porta. Ut dictum nonummy diam. Sed a leo.
+                	<h4 class="titleCo" id="title"></h4>
+                    <p id="intro"></p>
                 </div>
             </div>
             <div class="picLarge rotation01"></div>
