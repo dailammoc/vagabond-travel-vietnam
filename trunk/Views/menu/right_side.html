@@ -57,9 +57,33 @@
                 
                 <!-- blog right -->
                 <div class="blogRight">
-                	<div class="top2"><h4 class="titleR">Lịch khởi hành tour</h4> <a href="#" class="nn"></a> <a href="#" class="np"></a></div>
-                    <div class="bgT3 celendar"><img src="<?php echo DIR_IMG_ENTERPRISE ?>pic/celendar.png" width="272" height="171" /></div>
-                    <div class="bottom2"></div>
+<!--                	<div class="top2"><h4 class="titleR">Lịch khởi hành tour</h4> <a href="#" class="nn"></a> <a href="#" class="np"></a></div>-->
+<!--                    <div class="bgT3 celendar"><img src="<?php echo DIR_IMG_ENTERPRISE ?>pic/celendar.png" width="272" height="171" /></div>-->
+<!--                    <div class="bottom2"></div>-->
+                    <div class="bgT3 celendar" id="calendar-container"></div>
+                    <script>               
+                    Calendar.setup({
+                        cont          : "calendar-container",
+                        //weekNumbers   : true,
+                        selectionType : Calendar.SEL_MULTIPLE,
+                        selection     : Calendar.dateToInt(new Date()),
+                        //showTime      : 12,
+                        onSelect      : function() {
+                            var count = this.selection.countDays();
+                            if (count == 1) {
+                                var date = this.selection.get()[0];
+                                date = Calendar.intToDate(date);
+                                date = Calendar.printDate(date, "%A, %B %d, %Y");
+                                $("calendar-info").innerHTML = date;
+                                //alert(date);
+                            } else {
+                                $("calendar-info").innerHTML = Calendar.formatString("${count:no date|one date|two dates|# dates} selected", { count: count });
+                            }
+                        },
+                        
+                    });
+                    </script>
+                    
                 </div>
                 <!-- en blog right -->
                 
