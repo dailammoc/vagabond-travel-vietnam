@@ -1,5 +1,5 @@
 	<!-- header -->
-	<?php include("/Views/header/header.html")?>
+	<?php $this->load->view("header/header.html")?>
                 
                 <div class="content">
                 <!-- blog hot tour -->
@@ -9,7 +9,7 @@
                     	<li>
                         	<div class="picHotTour">
                             	<i class="pNe"></i>
-                            	<img src="images/pic/tourH1.jpg" class="imgHT" />
+                            	<img src="<?php echo $tour_hot[0]['hinh']?>" class="imgHT" />
                                 <div class="info">
                                 	<strong>Paris trang lệ</strong>
                                 	<div class="date">Ngày đi: 09 - 01 - 2012</div>
@@ -93,9 +93,9 @@ sagittis. Fusce elit ligula,  Aenean. Sed laoreet. Aenean pede. Phasellus porta.
             <!-- en main left -->
             
             <!-- main right -->
-                <?php include("/Views/menu/right_side.html")?>
+                <?php $this->load->view("menu/right_side.html")?>
                 
 	<!-- en bodymain -->
     
     <!-- footer -->
-	<?php include ("Views/footer/footer.html")?>
+	<?php $this->load->view ("footer/footer.html")?>
