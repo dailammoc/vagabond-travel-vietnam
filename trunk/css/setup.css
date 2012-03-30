@@ -22,7 +22,7 @@ li { list-style:none}
 .fn { float:none}
 .clr { clear:both}
 
-table { border-collapse:collapse; border:1px solid #a2a2a2}
+table { border-collapse:collapse; border:1px solid #a2a2a2; width :260px}
 
 .fixed:after { content: "."; display: block; clear: both; height: 0; visibility: hidden; }
 .fixed { display: block; min-height: 1%; }
