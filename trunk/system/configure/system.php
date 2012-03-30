@@ -8,7 +8,7 @@ $INI = array (
 
     'user' => 'root',
 
-    'pass' => '',
+    'pass' => 'root',
 
     //'name' => '51deal1',
 	//'user' => '192.168.11.53',

@@ -23,6 +23,8 @@ class Admin_Controller extends HKL_Controller{
 		$this->model->Model('Dichvu_dichvuModel');
 		$this->newModel = new Dichvu_Model();
 		$dichvu = $this -> newModel -> getDichVu();
+		$loaidichvu = $this -> newModel -> getLoaiDichVu();		
+		$loaidichvu = array_combine(Utility::GetColumn($loaidichvu,'id'), Utility::GetColumn($loaidichvu,'ten_dich_vu'));
 		include(DIR_VIEW_ENTERPRISE.'/admin/dichvu/dichvu.html');
 	}
 	public function tour()
