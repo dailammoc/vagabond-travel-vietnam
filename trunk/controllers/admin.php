@@ -23,7 +23,7 @@ class Admin_Controller extends HKL_Controller{
 		$this->model->Model('Dichvu_dichvuModel');
 		$this->newModel = new Dichvu_Model();
 		$dichvu = $this -> newModel -> getDichVu();
-		print_r($dichvu);
+		include(DIR_VIEW_ENTERPRISE.'/admin/dichvu/dichvu.html');
 	}
 	public function tour()
 	{
