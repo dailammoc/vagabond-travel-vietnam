@@ -74,16 +74,18 @@
 					<th class="table-header-check"><a id="toggle-all" ></a> </th>
 					<th class="table-header-repeat line-left minwidth-1"><a href="">Tên Dịch Vụ</a>	</th>
 					<th class="table-header-repeat line-left minwidth-1"><a href="">Loại Dịch Vụ</a></th>
-					<th class="table-header-repeat line-left"><a href="">Tiêu Đề</a></th>
+					<th class="table-header-repeat line-left"><a href="">Giới Thiệu</a></th>
 					<th class="table-header-repeat line-left"><a href="">Nội Dung</a></th>
-					
+					<th class="table-header-repeat line-left"><a href="">Option</a></th>
+					<th class="table-header-repeat line-left"><a href="">Hide</a></th>					
 				</tr>
-				<tr>
+				<?php $i = 0;if(count($dichvu) > 0)foreach($dichvu as $index => $one) { $i ++;?>
+					<tr class="<?php echo ($i %2 == 0) ? 'alternate-row' : '' ?>">
 					<td><input  type="checkbox"/></td>
-					<td>Sabev</td>
-					<td>George</td>
-					
-					<td><a href="">www.mainevent.co.za</a></td>
+					<td><?php echo $one['title']?></td>
+					<td><?php echo $loaidichvu[$one['id_loai_dv']]?></td>
+					<td><?php echo mb_substr($one['description'],0,50,'UTF-8'); ?></td>
+					<td><?php echo mb_substr($one['content'],0,50,'UTF-8'); ?></td>
 					<td class="options-width">
 					<a href="" title="Edit" class="icon-1 info-tooltip"></a>
 					<a href="" title="Edit" class="icon-2 info-tooltip"></a>
@@ -91,22 +93,9 @@
 					<a href="" title="Edit" class="icon-4 info-tooltip"></a>
 					<a href="" title="Edit" class="icon-5 info-tooltip"></a>
 					</td>
-				</tr>
-				<tr class="alternate-row">
 					<td><input  type="checkbox"/></td>
-					<td>Sabev</td>
-					<td>George</td>
-					
-					<td><a href="">www.mainevent.co.za</a></td>
-					<td class="options-width">
-					<a href="" title="Edit" class="icon-1 info-tooltip"></a>
-					<a href="" title="Edit" class="icon-2 info-tooltip"></a>
-					<a href="" title="Edit" class="icon-3 info-tooltip"></a>
-					<a href="" title="Edit" class="icon-4 info-tooltip"></a>
-					<a href="" title="Edit" class="icon-5 info-tooltip"></a>
-					</td>
 				</tr>
-				
+				<?php } ?>
 				</table>
 				<!--  end product-table................................... --> 
 				</form>
