@@ -68,14 +68,17 @@
                         selectionType : Calendar.SEL_MULTIPLE,
                         selection     : Calendar.dateToInt(new Date()),
                         //showTime      : 12,
+                        bottomBar : false,
                         onSelect      : function() {
                             var count = this.selection.countDays();
                             if (count == 1) {
                                 var date = this.selection.get()[0];
-                                date = Calendar.intToDate(date);
-                                date = Calendar.printDate(date, "%A, %B %d, %Y");
-                                $("calendar-info").innerHTML = date;
-                                //alert(date);
+                                //date = Calendar.intToDate(date);
+                                //date = Calendar.printDate(date, "%A-%B-%d-%Y");
+                                //$("calendar-info").innerHTML = date;
+                                ////////////
+                                $('.basic-modal-content').modal();
+                        		$('.basic-modal-content').load('<?php echo URL_HOME_ENTERPRISE ?>/views/tour/search_modal.php?date='+date);
                             } else {
                                 $("calendar-info").innerHTML = Calendar.formatString("${count:no date|one date|two dates|# dates} selected", { count: count });
                             }

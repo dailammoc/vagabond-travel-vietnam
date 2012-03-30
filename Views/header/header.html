@@ -11,11 +11,14 @@
 <script src="<?php echo DIR_JS_ENTERPRISE ?>calendar1.js" type="text/javascript"></script>
 
 <script src="<?php echo DIR_JS_ENTERPRISE ?>src/js/jscal2.js"></script>
-<script src="<?php echo DIR_JS_ENTERPRISE ?>src/js/lang/en.js"></script>    
+<script src="<?php echo DIR_JS_ENTERPRISE ?>src/js/lang/en.js"></script> 
+<script src="<?php echo DIR_JS_ENTERPRISE ?>jquery.simplemodal.js"></script> 
+<script src="<?php echo DIR_JS_ENTERPRISE ?>cycle.js"></script> 
+<script src="<?php echo DIR_JS_ENTERPRISE ?>easing.js"></script>  
 <link rel="stylesheet" href="<?php echo DIR_JS_ENTERPRISE ?>src/css/jscal2.css" type="text/css" />
 <link rel="stylesheet" href="<?php echo DIR_JS_ENTERPRISE ?>src/css/border-radius.css" type="text/css" />
 <link rel="stylesheet" href="<?php echo DIR_JS_ENTERPRISE ?>src/css/gold/gold.css" type="text/css" />
-
+<link rel="stylesheet" href="<?php echo DIR_CSS_ENTERPRISE ?>basic.css" type="text/css" />
 
 </head>
 <body>
@@ -51,8 +54,21 @@
     	
         	<!-- main left -->
             <div class="mainLeft position">
-            	
-                <div class="bannerSlide"><img src="<?php echo DIR_IMG_ENTERPRISE ?>pic/banner.jpg" /></div>
+            	<script>           	
+	            	$( function(){
+		            	$(".bannerSlide").cycle({
+			            	fx: 'scrollHorz'
+			            	,easing: 'easeOutExpo'
+			            	,timeout: 6000
+			            	,speed: 2000
+		            	});
+	            	});        	
+            	</script>
+<!--                 <div class="bannerSlide"><img src="<?php echo DIR_IMG_ENTERPRISE ?>pic/banner.jpg" /></div> -->
+                <div class="bannerSlide">	               
+						<img src="<?php echo DIR_IMG_ENTERPRISE ?>pic/banner.jpg" />											
+						<img src="<?php echo DIR_IMG_ENTERPRISE ?>pic/banner.jpg" />					
+                </div>
                 <div class="boxHotline">
                 	<div class="inHot">(08) 3939 6969</div>
                     <div class="shadow"></div>

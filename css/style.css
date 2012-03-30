@@ -34,7 +34,7 @@ a:hover { color:#b10c13; text-decoration:none}
 .mainRight { float:right; width:300px; background:#226794; color:#fff}
 
 .bannerSlide { width:700px; overflow:hidden}
-.boxHotline { width:270px; position:absolute; top:320px; left:0px}
+.boxHotline { width:270px; position:absolute; top:320px; left:0px; z-index :3}
 .inHot { background:#fff url(../images/ico/ico_phone.png) 10px 10px no-repeat; padding:20px 20px 20px 70px; color:#165c89; font-size:16px}
 .shadow { background:url(../images/bg/bg_shadow.png) no-repeat top left; height:41px; }
 

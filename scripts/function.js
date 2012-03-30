@@ -99,3 +99,7 @@ $(function () {
 		}
 	});
 });
+//////////////modal form footer.html
+function date_detail(){
+	
+}
