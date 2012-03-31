@@ -1,0 +1,34 @@
+<?php $this->load->view("header/header.html")?>
+                
+                <div class="content minHeight">
+                
+               	  <h4 class="titleALl"><?php echo $loai_dich_vu['ten_dich_vu']?></h4>
+                    
+                	<div class="alignJ">
+                		<img class="imgL" src="<?php echo DIR_IMG_ENTERPRISE.$dich_vu['hinh']?>">
+                		<div class="title"><?php echo $dich_vu['title']?></div>
+                	<?php echo $dich_vu['content']?></div>	
+                    
+                    <div class="clr padT10"></div>
+                    <h4 class="titleOther">Thông tin liên quan</h4>
+                    <ul class="listTourOther">
+                    	<li><a href="#">Aenean. Sed laoreet. Aenean pede. Phasellus porta</a></li>
+                        <li><a href="#">Fusce elit ligula,  Aenean. Sed laoreet. Aenean pede.</a></li>
+                        <li><a href="#">Aenean. Sed laoreet. Aenean pede. Phasellus porta</a></li>
+                        <li><a href="#">Fusce elit ligula,  Aenean. Sed laoreet. Aenean pede.</a></li>
+                        <li><a href="#">Aenean. Sed laoreet. Aenean pede. Phasellus porta</a></li>
+                        <li><a href="#">Fusce elit ligula,  Aenean. Sed laoreet. Aenean pede.</a></li>
+                    </ul>
+                    				
+                </div>    
+            
+			</div>
+            <!-- en main left -->
+            
+            <!-- main right -->
+    <?php $this->load->view("menu/right_side.html")?>
+                
+	<!-- en bodymain -->
+    
+    <!-- footer -->
+	<?php $this->load->view ("footer/footer.html")?>

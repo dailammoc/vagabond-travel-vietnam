@@ -38,10 +38,10 @@ class Tour_Controller extends HKL_Controller{
 	public function chitiet($id)
 	{
 		$tour = $this -> tourModel -> getTourById($id);
-		$loai_tour = $this -> tourModel -> getLoaiTourById($tour['ID_LOAI_TOUR']);
+		$loai_tour = $this -> tourModel -> getLoaiTourById($tour['id_loai_tour']);
 		$diemkhoihanh = $this -> tourModel -> getDiemKhoiHanhById($tour['id_diem_khoi_hanh']);
 		$diemden = $this -> tourModel -> getDiemDenById($tour['id_diem_den']);
-		$loaiphuongtien = $this -> tourModel -> getLoaiPhuongTien($tour['ID_PHUONG_TIEN']);
+		$loaiphuongtien = $this -> tourModel -> getLoaiPhuongTien($tour['id_phuong_tien']);
 		include(DIR_VIEW_ENTERPRISE.'/tour/chitiet.html');
 	}
 	public function search($diemkhoihanh,$diemden)
