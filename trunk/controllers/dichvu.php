@@ -21,7 +21,7 @@ class Dichvu_Controller extends HKL_Controller{
 	{
 		$dich_vu = $this->dichvuModel -> getDichVuById($id);
 		$loai_dich_vu = $this -> dichvuModel -> getLoaiDichVuById($dich_vu['id_loai_dv']);
-		include(DIR_VIEW_ENTERPRISE.'/dichvu/dichvu_chitiet.html');
+		include(DIR_VIEW_ENTERPRISE.'/dichvu/chitiet.html');
 	}
 }
 ?>

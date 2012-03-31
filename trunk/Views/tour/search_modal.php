@@ -7,9 +7,15 @@
 	$string = $day .'-'.$month .'-'.$year;
 	$int_date =  strtotime($string);
 	$int_date_end = $int_date + 86400;
+	
 	$tour = db::LimitQuery('tour',array(
-		'condition' => array('ngaydi >='.$int_date,'ngaydi <='.$int_date_end),
+		'condition' => array('ngay_di >='.$int_date,'ngay_di <='.$int_date_end),
 			));
+	$diemkhoihanh = db::LimitQuery('loai_diem_khoi_hanh');
+	$diemkhoihanh = array_combine(Utility::GetColumn($diemkhoihanh,'id'), Utility::GetColumn($diemkhoihanh,'ten_dia_diem'));
+	
+	$diemden = db::LimitQuery('loai_diem_den');
+	$diemden = array_combine(Utility::GetColumn($diemden,'id'), Utility::GetColumn($diemden,'ten_dia_diem'));
 	if(count($tour) > 0){
 ?>
 <link href="<?php echo DIR_CSS_ENTERPRISE ?>setup.css" rel="stylesheet" type="text/css" />
@@ -37,12 +43,14 @@
                                 <td class="titleT"><?php echo $diemkhoihanh[$one['id_diem_khoi_hanh']].'-'. $diemden[$one['id_diem_den']]; ?></td>
                                 <td><?php echo $one['so_ngay']?></td>
                                 <td><?php echo $one['gia_tour']."Đ"?></td>
-                                <td><?php echo $one['ngay_di']?></td>
-                                <td><?php echo $one['ngay_ve']?></td>
+                                <td><?php echo date('d-m-Y',$one['ngay_di'])?></td>
+                                <td><?php echo date('d-m-Y',$one['ngay_ve'])?></td>
                                 <td><?php echo $one['ma_so_phuong_tien']?></td>
                                 <td><?php echo $one['gio_di']?></td>
                                 <td><?php echo $one['gio_den']?></td>
-                                <td>9<br /><a href="#" class="bntB2">Đặt tour</a></td>
+                                <td>9<br />
+                                <a href="<?php echo URL_HOME?>/tour/chitiet/<?php echo $one['id']?>" class="bntB2" target="_blank">Chi Tiết</a>
+                                </td>
                               </tr>
                               <?php } }?>
                            

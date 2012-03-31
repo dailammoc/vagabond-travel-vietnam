@@ -98,8 +98,15 @@ $(function () {
 			});
 		}
 	});
+	
+	//////////search tour
+	$('#search_tour_submit').click(function(){
+		alert("asd");
+		//location.href="google.com";
+	}		
 });
 //////////////modal form footer.html
-function date_detail(){
-	
+function order_tour(tour_id){
+	$('.basic-modal-content').modal({minHeight:455,minWidth: 870,overlayClose:true});
+	$('.basic-modal-content').load(URL_HOME_ENTERPRISE + '/Views/tour/order_tour.php?team_id='+tour_id);
 }
