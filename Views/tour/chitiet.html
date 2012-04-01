@@ -13,7 +13,7 @@
                             Phương tiện đi về bằng <?php echo $loaiphuongtien['ten_phuong_tien']?><br />
                             Khởi hành: <?php echo date('d-m-Y',$tour['ngay_di'])?><br />
                         </div>
-                        <div class="padT"><a href="#" class="bntBookTour">Đặt Tour</a></div>
+                        <div class="padT"><a href="javascript:order_tour(<?php echo $tour['id'] ?>)" class="bntBookTour">Đặt Tour</a></div>
                         <div class="clr padT10"></div>
                         
                         <div class="txtD">

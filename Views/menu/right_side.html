@@ -1,4 +1,3 @@
-<script src="<?php echo DIR_JS_ENTERPRISE ?>function.js"></script>
 <?php
 	$diemkhoihanh = DB::LimitQuery('loai_diem_khoi_hanh');
 	$diemden = DB::LimitQuery('loai_diem_den');
@@ -25,14 +24,14 @@
                     	<h4 class="titleR">tìm tour</h4>
                     	<div class="boxSearch">
                         	<label>Điểm khởi hành</label>
-                        	<select name="" class="selS">
+                        	<select name="" class="selS" id="search_diemkhoihanh">
                         		<option value="0">Tất Cả</option>                       		
                         		<?php foreach($diemkhoihanh as $index => $one){?>
                         			<option value="<?php $one['id']?>"><?php echo $one['ten_dia_diem']?></option>
                         		<?php } ?>
                         	</select><br>
                             <label>Điểm đến</label> 
-                            <select name="" class="selS">
+                            <select name="" class="selS" id="search_diemden">
                             	<option value="0">Tất Cả</option> 
                             	<?php foreach($diemden as $index => $one){?>
                         			<option value="<?php $one['id']?>"><?php echo $one['ten_dia_diem']?></option>
@@ -97,7 +96,7 @@
                 
                 <div class="blogEmail">
                 	<h4 class="titleR">Nhận thông tin khuyến mãi</h4>
-                    Email <input type="text" class="inpEm" id="email_km"/> <input type="submit" value="" class="bntEm" />
+                    Email <input type="text" class="inpEm" id="email_km"/> <input type="submit" value="" class="bntEm" id="email_km_submit"/>
                 </div>
                 
             </div>
