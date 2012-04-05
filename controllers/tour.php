@@ -14,7 +14,10 @@ class Tour_Controller extends HKL_Controller{
 	}
 	public function nhatky()
 	{
-		$tour = $this -> tourModel -> getTour();
+		$nhatky = $this -> tourModel -> getNhatKy();
+		$nhatky_image_arr = $this -> tourModel -> getNhatKyImage();
+		$nhatky_image = array_combine(Utility::GetColumn($nhatky_image_arr,'id_nhat_ky_tour'), Utility::GetColumn($nhatky_image_arr,'hinh'));
+		$nhatky_loibinh = array_combine(Utility::GetColumn($nhatky_image_arr,'id_nhat_ky_tour'), Utility::GetColumn($nhatky_image_arr,'loi_binh'));
 		include(DIR_VIEW_ENTERPRISE.'/tour/nhatky.html');
 	}
 	public function nuocngoai()

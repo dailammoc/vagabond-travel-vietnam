@@ -51,5 +51,12 @@ class Tour_Model{
 		$result = DB::LimitQuery('tour',array('condition'=>$condition));
 		return $result;
 	}
-	
+	public function getNhatKy(){
+		$nhatky = DB::LimitQuery('nhat_ky_tour');
+		return $nhatky;
+	}
+	public function getNhatKyImage(){
+		$nhatky = DB::LimitQuery('nhat_ky_tour_images');
+		return $nhatky;
+	}
 }

@@ -159,22 +159,28 @@ $(document).ready(function(){
 	switch (filename)
 	{
 	case 'nuocngoai':
+		$('.menuT ul li:eq(0) a').removeClass('active');
 		$('.categories ul li:eq(0) a').addClass('active');
 		break;
 		
 	case 'trongnuoc':
+		$('.menuT ul li:eq(0) a').removeClass('active');
 		$('.categories ul li:eq(1) a').addClass('active');
 		break;
 	case 'duhoc':
+		$('.menuT ul li:eq(0) a').removeClass('active');
 		$('.categories ul li:eq(2) a').addClass('active');
 		break;
 	case 'vemaybay':
+		$('.menuT ul li:eq(0) a').removeClass('active');
 		$('.categories ul li:eq(3) a').addClass('active');
 		break;
 	case 'dichvu':
+		$('.menuT ul li:eq(0) a').removeClass('active');
 		$('.categories ul li:eq(4) a').addClass('active');
 		break;
 	case 'nhatky':
+		$('.menuT ul li:eq(0) a').removeClass('active');
 		$('.categories ul li:eq(5) a').addClass('active');
 		break;
 	case 'gioithieu':
