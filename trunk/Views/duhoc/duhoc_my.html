@@ -1,13 +1,13 @@
-<?php include("/Views/header/header.html")?>
+<?php $this->load->view("header/header.html")?>
 	
                 
                 <div class=" minHeight blogStudy">
                 
-               	  	<div><img src="images/bg/topDH.jpg" /></div>
+               	  	<div><img src="<?php echo DIR_IMG_ENTERPRISE ?>bg/topDH.jpg" /></div>
                     
                     <div class="padT25 fixed">
-                    	<span class="fl"><a href="#"><img src="images/bg/lk.png"  /></a></span>
-                        <span><a href="#"><img src="images/bg/ch.png"  /></a></span>
+                    	<span class="fl"><a href="#"><img src="<?php echo DIR_IMG_ENTERPRISE ?>bg/lk.png"  /></a></span>
+                        <span><a href="#"><img src="<?php echo DIR_IMG_ENTERPRISE ?>bg/ch.png"  /></a></span>
                     </div>
                     
                     <div class="bgP">Đừng ngần ngại, hãy điền thông tin vào đây, chúng tôi sẽ liên lạc với bạn ngay</div>
@@ -35,9 +35,9 @@
             <!-- en main left -->
             
             <!-- main right -->
-            <?php include("/Views/menu/right_side.html")?>
+            <?php $this->load->view("menu/right_side.html")?>
                 
 	<!-- en bodymain -->
     
     <!-- footer -->
-	<?php include ("Views/footer/footer.html")?>
+	<?php $this->load->view ("footer/footer.html")?>

@@ -1,4 +1,4 @@
-<?php include("/Views/header/header.html")?>
+<?php $this->load->view("header/header.html")?>
                 
                 <div class=" minHeight blogStudy">
                 
@@ -8,45 +8,36 @@
                     	<div class="flag"><img src="images/pic/us.jpg" /></div>
                         <h4 class="titleSt"><a href="#">Du Học Mỹ</a></h4>
                         <div class="txtSt">
-                        	Lorem ipsum dolor sit actetuer adipiscing elit. Praesent vulum molestie lacunean nonummy hendrerit mauasellus porta. Fusce suscipit varius mi. 
-Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla dui. Fusce feugiata orci.  laoreet aliquam leo. Ut tellus 
-dolor, dapibus eget, elementum vel.
-cursusAv, porta vel, scelerisque eget, malesuada at, neque. Vivamus eget nibh. Etiam cursus leo vel metus. Nulla facilisi. Aenean nec eros. Vestibulum ante ipsum
+                        	<?php echo $duhoc_detail_des[1]?>
                         </div>
-                        <a href="#" class="moreSt">chi tiết</a>
+                        <a href="duhoc/my" class="moreSt">chi tiết</a>
                     </div>
                     
                     <div class="colStudy">
                     	<div class="flag"><img src="images/pic/other.jpg" /></div>
                         <h4 class="titleSt"><a href="#">Du Học Các Nước Khác</a></h4>
                         <div class="txtSt">
-                        	Lorem ipsum dolor sit actetuer adipiscing elit. Praesent vulum molestie lacunean nonummy hendrerit mauasellus porta. Fusce suscipit varius mi. 
-Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla dui. Fusce feugiata orci.  laoreet aliquam leo. Ut tellus 
-dolor, dapibus eget, elementum vel.
-cursusAv, porta vel, scelerisque eget, malesuada at, neque. Vivamus eget nibh. Etiam cursus leo vel metus. Nulla facilisi. Aenean nec eros. Vestibulum ante ipsum
+                        	<?php echo $duhoc_detail_des[1]?>
                         </div>
-                        <a href="#" class="moreSt">chi tiết</a>
+                        <a href="duhoc/other" class="moreSt">chi tiết</a>
                     </div>
                     
-                    <div class="padC20"><a href="#" class="download">Download tài liệu</a></div>
+                    <div class="padC20"><a href="<?php echo $link_tai_lieu['link'] ?>" class="download">Download tài liệu</a></div>
                     
                     <div class="boxInfoSt">
                     	<h4 class="titleALl">Những Thông Tin cần biết khi du học</h4>
                         <ul class="listOther">
-                                <li><a href="#">Aenean. Sed laoreet. Aenean pede. a</a></li>
-                                <li><a href="#">Fusce elit ligula,  Aenean. Sed laoreet.</a></li>
-                                <li><a href="#">Aenean. Sed laoreet. Aenean pede. Phasellus </a></li>
-                                <li><a href="#">Fusce elit ligula,  Aenean. Sed laoreet.</a></li>
-                                <li><a href="#">Aenean. Sed laoreet. Aenean pede. Phasellus </a></li>
-                                <li><a href="#">Fusce elit ligula,  Aenean. Sed laoreete.</a></li>
+                        		<?php foreach($nhung_dieu_can_biet as $index => $one){?>
+                        			<li><a href="<?php echo $one['link']?>"><?php echo $one['title']?></a></li>
+                        		<?php } ?>
                         </ul>
                     </div>
                     
                     <div class="boxInOther fixed">
                     	<ul>
-                        	<li><a href="#">Giới thiệu</a></li>
-                            <li><a href="#">Visa Thành Công</a></li>
-                            <li><a href="#">Thông Tin mới</a></li>
+                        	<li><a href="duhoc/gioithieu">Giới thiệu</a></li>
+                            <li><a href="duhoc/visa">Visa Thành Công</a></li>
+                            <li><a href="duhoc/news">Thông Tin mới</a></li>
                         </ul>
                         
                     </div>
@@ -57,9 +48,9 @@ cursusAv, porta vel, scelerisque eget, malesuada at, neque. Vivamus eget nibh. E
             <!-- en main left -->
             
             <!-- main right -->
-            <?php include("/Views/menu/right_side.html")?>
+            <?php $this->load->view("menu/right_side.html")?>
                 
 	<!-- en bodymain -->
     
     <!-- footer -->
-	<?php include ("Views/footer/footer.html")?>
+	<?php $this->load->view ("footer/footer.html")?>
