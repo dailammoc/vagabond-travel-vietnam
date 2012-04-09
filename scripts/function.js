@@ -198,3 +198,8 @@ function order_tour(tour_id){
 	$('.basic-modal-content').modal({minWidth: 870,overlayClose:true});
 	$('.basic-modal-content').load(URL_HOME_ENTERPRISE + '/Views/tour/order_tour.php?tour_id='+tour_id);
 }
+
+function duhoc(type){
+	$('.basic-modal-content').modal({minWidth: 870,overlayClose:true});
+	$('.basic-modal-content').load(URL_HOME_ENTERPRISE + '/Views/duhoc/info.php?type='+type);
+}
