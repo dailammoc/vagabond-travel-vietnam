@@ -13,6 +13,11 @@ class Vemaybay_Controller extends HKL_Controller{
 		$now = time();
 		$diemkhoihanh = $this -> vemaybayModel -> getDiemKhoiHanh();
 		$diemden = $this -> vemaybayModel -> getDiemDen();
+		
+		$banggia = $this -> vemaybayModel -> getBangGiaMayBay();
+		$info_muavemaybay = $this -> vemaybayModel -> getInfoMuaVeMayBay();
+		$info_quydinhhangkhong = $this -> vemaybayModel -> getInfoQuyDinhHangKhong();
+		$info_truocchuyenbay = $this -> vemaybayModel -> getInfoQuyDinhHangKhong();
 		include(DIR_VIEW_ENTERPRISE.'/vemaybay/vemaybay.html');
 	}
 }

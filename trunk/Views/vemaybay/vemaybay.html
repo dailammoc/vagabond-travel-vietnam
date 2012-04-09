@@ -87,42 +87,40 @@ $(function () {
                         <div class="clr"></div>
                     </div>
                     <!-- en blog booking -->
-                    
-                    <div class="padT25"><a href="#" class="download">Download Bảng giá mới nhất</a></div>
-                    
+                    <?php if($banggia['hide'] == 0){?>
+                    <div class="padT25"><a href="<?php echo $banggia['link']?>" class="download">Download Bảng giá mới nhất</a></div>
+                    <?php }?>
                     <!-- blog news -->
                     <div class="boxNewsTick boderRadius">
                     	<div class="col">
                         	<h4 class="titleALl">Mua Vé Máy Bay</h4>
                             <ul class="listOther">
-                                <li><a href="#">Aenean. Sed laoreet. Aenean pede. a</a></li>
-                                <li><a href="#">Fusce elit ligula,  Aenean. Sed laoreet.</a></li>
-                                <li><a href="#">Aenean. Sed laoreet. Aenean pede. Phasellus </a></li>
-                                <li><a href="#">Fusce elit ligula,  Aenean. Sed laoreet.</a></li>
-                                <li><a href="#">Aenean. Sed laoreet. Aenean pede. Phasellus </a></li>
-                                <li><a href="#">Fusce elit ligula,  Aenean. Sed laoreete.</a></li>
+                            	<?php foreach($info_muavemaybay as $index => $one) {?>
+                            		<?php if($one['hide'] == 0){?>
+                            			<li><a href="<?php $one['link']?>"><?php echo $one['title']?></a></li>
+                            		<?php }?>
+                            	<?php }?>
+                             
                             </ul>
                         </div>
                         <div class="col">
                         	<h4 class="titleALl">Qui Định Hàng Không</h4>
                             <ul class="listOther">
-                                <li><a href="#">Aenean. Sed laoreet. Aenean pede. a</a></li>
-                                <li><a href="#">Fusce elit ligula,  Aenean. Sed laoreet.</a></li>
-                                <li><a href="#">Aenean. Sed laoreet. Aenean pede. Phasellus </a></li>
-                                <li><a href="#">Fusce elit ligula,  Aenean. Sed laoreet.</a></li>
-                                <li><a href="#">Aenean. Sed laoreet. Aenean pede. Phasellus </a></li>
-                                <li><a href="#">Fusce elit ligula,  Aenean. Sed laoreete.</a></li>
+                            	<?php foreach($info_quydinhhangkhong as $index => $one) {?>
+                            		<?php if($one['hide'] == 0){?>
+                            			<li><a href="<?php $one['link']?>"><?php echo $one['title']?></a></li>
+                            		<?php }?>
+                            	<?php }?>
                             </ul>
                         </div>
                         <div class="col">
                         	<h4 class="titleALl">Trước Chuyến Bay</h4>
                             <ul class="listOther">
-                                <li><a href="#">Aenean. Sed laoreet. Aenean pede. a</a></li>
-                                <li><a href="#">Fusce elit ligula,  Aenean. Sed laoreet.</a></li>
-                                <li><a href="#">Aenean. Sed laoreet. Aenean pede. Phasellus </a></li>
-                                <li><a href="#">Fusce elit ligula,  Aenean. Sed laoreet.</a></li>
-                                <li><a href="#">Aenean. Sed laoreet. Aenean pede. Phasellus </a></li>
-                                <li><a href="#">Fusce elit ligula,  Aenean. Sed laoreete.</a></li>
+                                <?php foreach($info_truocchuyenbay as $index => $one) {?>
+                            		<?php if($one['hide'] == 0){?>
+                            			<li><a href="<?php $one['link']?>"><?php echo $one['title']?></a></li>
+                            		<?php }?>
+                            	<?php }?>
                             </ul>
                         </div>
                         <div class="clr"></div>

@@ -16,6 +16,10 @@ class Tour_Model{
 		$loaiphuongtien = Table::Fetch('loai_phuong_tien',$id);
 		return $loaiphuongtien;
 	}
+	public function getLoaiPhuongTienAll(){
+		$loaiphuongtien = db::LimitQuery('loai_phuong_tien');
+		return $loaiphuongtien;
+	}
 	public function getTourByLoaiTour($id){
 		$tourByLoaiTour = DB::LimitQuery('tour',array(
 			'condition' => array('id_loai_tour' => $id)
