@@ -1,47 +1,113 @@
 <?php $this->load->view("admin/header/header.html")?>
 <!--  start page-heading -->
 	<div id="page-heading">
-		<h1>Add product</h1>
+		<h1>INTRO</h1>
 	</div>
 	<!-- end page-heading -->
-
+		<div class="step-dark-left" style="margin-left:20px">
+			<a href="javascript:add_intro()">THÊM</a>
+		</div>
+		
 	<table border="0" width="100%" cellpadding="0" cellspacing="0" id="content-table">
 	<tr>
-		<th rowspan="3" class="sized"><img src="images/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
+		<th rowspan="3" class="sized"><img src="<?php echo DIR_IMG_ENTERPRISE ?>shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
 		<th class="topleft"></th>
 		<td id="tbl-border-top">&nbsp;</td>
 		<th class="topright"></th>
-		<th rowspan="3" class="sized"><img src="images/shared/side_shadowright.jpg" width="20" height="300" alt="" /></th>
+		<th rowspan="3" class="sized"><img src="<?php echo DIR_IMG_ENTERPRISE ?>shared/side_shadowright.jpg" width="20" height="300" alt="" /></th>
 	</tr>
 	<tr>
 		<td id="tbl-border-left"></td>
 		<td>
 		<!--  start content-table-inner ...................................................................... START -->
+		
 		<div id="content-table-inner">
 		
 			<!--  start table-content  -->
+			
 			<div id="table-content">
-			<h2>Sub Heading </h2>
-			<h3>Local Heading</h3>
 			
-			Lorem ipsum dolor sit amet consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et Lorem ipsum dolor sit amet consectetur 
-			adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  dolore magna aliqua. Lorem ipsum dolor sit amet consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et Lorem ipsum dolor sit amet consectetur 
-			adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  dolore magna aliqua. 
-			<br />
-			<br />
-			Lorem ipsum dolor sit amet consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et Lorem ipsum dolor sit amet consectetur 
-			adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  dolore magna aliqua. Lorem ipsum dolor sit amet consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et Lorem ipsum dolor sit amet consectetur 
-			adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  dolore magna aliqua. 
-			<br />
-			<br />
-			Lorem ipsum dolor sit amet consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et Lorem ipsum dolor sit amet consectetur 
-			adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  dolore magna aliqua. Lorem ipsum dolor sit amet consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et Lorem ipsum dolor sit amet consectetur 
-			adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  dolore magna aliqua. 
-			
-			
+				<!--  start message-yellow -->
+				
+		
+		 		
+				<!--  start product-table ..................................................................................... -->
+				<form id="mainform" action="">
+				<table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
+				<tr>
+					<th class="table-header-check"><a id="toggle-all" ></a> </th>
+					<th class="table-header-repeat line-left"><a>ID</a>	</th>
+					<th class="table-header-repeat line-left minwidth-1"><a href="">Tên Địa Điểm</a></th>
+					<th class="table-header-repeat line-left minwidth-1"><a href="">Hình Đại Diện</a></th>
+					<th class="table-header-repeat line-left minwidth-1"><a href="">Title</a></th>
+					<th class="table-header-repeat line-left minwidth-1"><a href="">Giới Thiệu</a></th>
+					<th class="table-header-repeat line-left minwidth-1"><a href="">Hình 1</a></th>
+					<th class="table-header-repeat line-left minwidth-1"><a href="">Hình 2</a></th>
+					<th class="table-header-repeat line-left minwidth-1"><a href="">Hình 3</a></th>
+														
+					<th class="table-header-repeat line-left minwidth-1"><a href="">Option</a></th>	
+					<th class="table-header-repeat line-left"><a href="">HIDE</a></th>									
+				</tr>
+				<?php $i = 0;if(count($intro) > 0)foreach($intro as $index => $one) { $i ++;?>
+					<tr class="<?php echo ($i %2 == 0) ? 'alternate-row' : '' ?>">
+					<td><input  type="checkbox"/></td>
+					<td><?php echo $one['id']?></td>
+					<td><?php echo $one['ten_dia_diem']?></td>
+					<td><?php echo $one['hinh_dai_dien']?></td>
+					<td><?php echo $one['title']?></td>
+					<td><?php echo $one['gioi_thieu']?></td>
+					<td><?php echo $one['hinh_1']?></td>
+					<td><?php echo $one['hinh_2']?></td>
+					<td><?php echo $one['hinh_3']?></td>
+					
+					<td class="options-width">
+					<a href="" title="Edit" class="icon-1 info-tooltip"></a>
+					<a href="" title="Delete" class="icon-2 info-tooltip"></a>
+					
+					</td>
+					<td><input  type="checkbox"/></td>
+				</tr>
+				<?php } ?>
+				</table>
+				<!--  end product-table................................... --> 
+				</form>
 			</div>
-			<!--  end table-content  -->
-	
+			<!--  end content-table  -->
+		
+			<!--  start actions-box ............................................... -->
+			<div id="actions-box">
+				<a href="" class="action-slider"></a>
+				<div id="actions-box-slider">
+					<a href="" class="action-edit">Edit</a>
+					<a href="" class="action-delete">Delete</a>
+					<a href="" class="action-delete">Hide</a>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<!-- end actions-box........... -->
+			
+			<!--  start paging..................................................... -->
+			<table border="0" cellpadding="0" cellspacing="0" id="paging-table">
+			<tr>
+			<td>
+				<a href="" class="page-far-left"></a>
+				<a href="" class="page-left"></a>
+				<div id="page-info">Page <strong>1</strong> / 15</div>
+				<a href="" class="page-right"></a>
+				<a href="" class="page-far-right"></a>
+			</td>
+			<td>
+			<select  class="styledselect_pages">
+				<option value="">Number of rows</option>
+				<option value="">1</option>
+				<option value="">2</option>
+				<option value="">3</option>
+			</select>
+			</td>
+			</tr>
+			</table>
+			<!--  end paging................ -->
+			
 			<div class="clear"></div>
 		 
 		</div>
@@ -55,5 +121,4 @@
 		<th class="sized bottomright"></th>
 	</tr>
 	</table>
-
 <?php $this->load->view ("admin/footer/footer.html")?>

@@ -8,14 +8,27 @@ class Admin_Controller extends HKL_Controller{
 	}
 	public function index()
 	{
-	}
-	
-	public function login($id)
-	{
 		parent::__construct();
 		$this->model->Model('Admin_adminModel');
 		$this->newModel = new Admin_Model();
 		include(DIR_VIEW_ENTERPRISE.'/admin/login.html');
+	}
+	
+	public function login($id)
+	{
+		
+	}
+	
+	public function intro($type)
+	{
+		parent::__construct();
+		$this->model->Model('Intro_introModel');
+		$this->newModel = new Intro_Model();
+		$intro = $this -> newModel -> getIntroAll();
+		if($type == 'add'){
+			include(DIR_VIEW_ENTERPRISE.'/admin/intro/add.html');
+		}
+		//include(DIR_VIEW_ENTERPRISE.'/admin/intro/intro.html');
 	}
 	public function dichvu()
 	{
