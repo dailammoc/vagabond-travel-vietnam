@@ -28,9 +28,10 @@ class Admin_Controller extends HKL_Controller{
 		if($type == 'add'){
 			include(DIR_VIEW_ENTERPRISE.'/admin/intro/add.html');
 		}
-		//include(DIR_VIEW_ENTERPRISE.'/admin/intro/intro.html');
+		else
+			include(DIR_VIEW_ENTERPRISE.'/admin/intro/intro.html');
 	}
-	public function dichvu()
+	public function dichvu($type)
 	{
 		parent::__construct();
 		$this->model->Model('Dichvu_dichvuModel');
@@ -38,7 +39,11 @@ class Admin_Controller extends HKL_Controller{
 		$dichvu = $this -> newModel -> getDichVu();
 		$loaidichvu = $this -> newModel -> getLoaiDichVu();		
 		$loaidichvu = array_combine(Utility::GetColumn($loaidichvu,'id'), Utility::GetColumn($loaidichvu,'ten_dich_vu'));
-		include(DIR_VIEW_ENTERPRISE.'/admin/dichvu/dichvu.html');
+		if($type == 'add'){
+			include(DIR_VIEW_ENTERPRISE.'/admin/dichvu/add.html');
+		}
+		else
+			include(DIR_VIEW_ENTERPRISE.'/admin/dichvu/dichvu.html');
 	}
 	
 	public function gioithieu()
