@@ -4,5 +4,10 @@ class Intro_Model{
 		$intro = Table::Fetch('intro',$id);
 		return $intro;
 	}
+	
+	public function getIntroAll($id){
+		$intro = db::LimitQuery('intro');
+		return $intro;
+	}
 }
 ?>
