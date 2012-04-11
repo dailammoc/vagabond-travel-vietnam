@@ -37,16 +37,16 @@
 				<tr>
 					<th class="table-header-check"><a id="toggle-all" ></a> </th>
 					<th class="table-header-repeat line-left"><a>ID</a>	</th>
-					<th class="table-header-repeat line-left minwidth-1"><a href="">Tên Địa Điểm</a></th>
-					<th class="table-header-repeat line-left minwidth-1"><a href="">Hình Đại Diện</a></th>
-					<th class="table-header-repeat line-left minwidth-1"><a href="">Title</a></th>
-					<th class="table-header-repeat line-left minwidth-1"><a href="">Giới Thiệu</a></th>
-					<th class="table-header-repeat line-left minwidth-1"><a href="">Hình 1</a></th>
-					<th class="table-header-repeat line-left minwidth-1"><a href="">Hình 2</a></th>
-					<th class="table-header-repeat line-left minwidth-1"><a href="">Hình 3</a></th>
+					<th class="table-header-repeat line-left minwidth-1"><a>Tên Địa Điểm</a></th>
+					<th class="table-header-repeat line-left minwidth-1"><a >Hình Đại Diện</a></th>
+					<th class="table-header-repeat line-left minwidth-1"><a >Title</a></th>
+					<th class="table-header-repeat line-left minwidth-1"><a >Giới Thiệu</a></th>
+					<th class="table-header-repeat line-left minwidth-1"><a >Hình 1</a></th>
+					<th class="table-header-repeat line-left minwidth-1"><a >Hình 2</a></th>
+					<th class="table-header-repeat line-left minwidth-1"><a >Hình 3</a></th>
 														
-					<th class="table-header-repeat line-left minwidth-1"><a href="">Option</a></th>	
-					<th class="table-header-repeat line-left"><a href="">HIDE</a></th>									
+					<th class="table-header-repeat line-left"><a >Option</a></th>	
+					<th class="table-header-repeat line-left"><a >HIDE</a></th>									
 				</tr>
 				<?php $i = 0;if(count($intro) > 0)foreach($intro as $index => $one) { $i ++;?>
 					<tr class="<?php echo ($i %2 == 0) ? 'alternate-row' : '' ?>">
@@ -61,8 +61,8 @@
 					<td><?php echo $one['hinh_3']?></td>
 					
 					<td class="options-width">
-					<a href="" title="Edit" class="icon-1 info-tooltip"></a>
-					<a href="" title="Delete" class="icon-2 info-tooltip"></a>
+					<a href="javascript:intro(<?php echo $one['id']?>)" title="Edit" class="icon-1 info-tooltip"></a>
+					
 					
 					</td>
 					<td><input  type="checkbox"/></td>
