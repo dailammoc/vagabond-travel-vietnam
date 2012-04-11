@@ -10,12 +10,17 @@
 
 <!--  jquery core -->
 <script src="<?php echo DIR_JS_ENTERPRISE ?>jquery/jquery-1.4.1.min.js" type="text/javascript"></script>
- 
+ <script>
+	var DIR_AJAX_TRAVEL = "<?php echo DIR_AJAX_TRAVEL ?>";
+	var URL_HOME_ENTERPRISE = "<?php echo URL_HOME_ENTERPRISE ?>";
+</script>
 <!--  checkbox styling script -->
 <script src="<?php echo DIR_JS_ENTERPRISE ?>jquery/ui.core.js" type="text/javascript"></script>
 <script src="<?php echo DIR_JS_ENTERPRISE ?>jquery/ui.checkbox.js" type="text/javascript"></script>
 <script src="<?php echo DIR_JS_ENTERPRISE ?>jquery/jquery.bind.js" type="text/javascript"></script>
 <script src="<?php echo DIR_JS_ENTERPRISE ?>function_admin.js" type="text/javascript"></script>
+<script src="<?php echo DIR_JS_ENTERPRISE ?>jquery.simplemodal.js"></script> 
+<link rel="stylesheet" href="<?php echo DIR_CSS_ENTERPRISE ?>basic.css" type="text/css" />
 <script type="text/javascript">
 $(function(){
 	$('input').checkBox();
