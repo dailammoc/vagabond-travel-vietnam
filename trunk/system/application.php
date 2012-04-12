@@ -22,7 +22,7 @@ define('DIR_FUNCTION', DIR_ROOT . '/function');
 define('DIR_CONFIGURE', DIR_ROOT . '/configure');
 define('SYS_PHPFILE', DIR_ROOT . '/configure/system.php');
 define('WWW_ROOT', rtrim(dirname(DIR_ROOT),'/'));
-define('IMG_ROOT', dirname(DIR_ROOT) . '/static');
+define('IMG_ROOT', dirname(DIR_ROOT) . '/images');
 define('DIR_MODEL', DIR_ROOT . '/model');
 /* important function */
 function myAutoload($class_name) {

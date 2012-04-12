@@ -844,7 +844,28 @@ function upload_table_price($inputname,$id) {
 	}
 	return $link;
 }
-
+function upload_image_dir($inputname,$image=null,$type){
+	$year = date('Y');
+	$day = date('md');
+	$nTime = time().rand(1000,9999);
+	$n= $nTime.'.jpg';
+	$z = $_FILES[$inputname];
+	if ($z && strpos($z['type'], 'image')===0 && $z['error']==0) {
+		if (!$image) {
+		RecursiveMkdir( IMG_ROOT . '/' . "{$type}/{$year}/{$day}" );
+		$image = "{$type}/{$year}/{$day}/{$n}";
+		$path = IMG_ROOT . '/' . $image;
+		//move_uploaded_file($z['tmp_name'], $path);
+		}
+		else{
+			RecursiveMkdir( dirname(IMG_ROOT .'/' .$image) );
+			$path = IMG_ROOT . '/' .$image;
+		}
+		move_uploaded_file($z['tmp_name'], $path);
+		return $image;
+	}
+	return  $image;
+}
 function upload_image_resize($inputname, $image=null, $imageresize=null, $type='team') {
 	$year = date('Y');
 	$day = date('md');
