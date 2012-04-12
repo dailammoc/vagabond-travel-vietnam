@@ -22,7 +22,7 @@
                               <?php foreach($tour as $index => $one) {?>
                               <?php if($one['hide'] == 0) {?>
                               	<tr>                          
-                                <td class="titleT"><?php echo $diemkhoihanh[$one['id_diem_khoi_hanh']].'-'. $diemden[$one['id_diem_den']]; ?></td>
+                                <td class="titleT"><a href="chitiet/<?php echo $one['id'] ?>/trongnuoc"><?php echo $diemkhoihanh[$one['id_diem_khoi_hanh']].'-'. $diemden[$one['id_diem_den']]; ?></a></td>
                                 <td><?php echo $one['so_ngay']?></td>
                                 <td><?php echo $one['gia_tour']."Đ"?></td>
                                 <td><?php echo $one['ngay_di']?></td>
@@ -31,7 +31,7 @@
                                 <td><?php echo $one['gio_di']?></td>
                                 <td><?php echo $one['gio_den']?></td>
                                 <td>9<br /><a href="#" class="bntB2">Đặt tour</a>
-                                <br /><a href="chitiet/<?php echo $one['id'] ?>/trongnuoc">Chi Tiết</a>
+                                
                                 </td>
                               </tr>
                               <?php } }?>

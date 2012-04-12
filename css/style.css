@@ -137,7 +137,11 @@ a:hover { color:#b10c13; text-decoration:none}
 .blogTourTab td { text-align:center; padding:4px}
 .rowTop { font-weight:bold; color:#fff}
 .titleT { font-weight:bold}
-.bntB2 { background:#fff; color:#4bd1e8; padding:2px 5px; font-weight:bold}
+.bntB2 { 
+/*	background:#fff; */
+/*	color:#4bd1e8; */
+	padding:2px 5px; 
+	font-weight:bold}
 
 .blogDiary li { float:left; width:26%; margin:2% 3%}
 .picDia { background:url(../images/bg/bg_diary.png) no-repeat; width:167px; height:149px;}

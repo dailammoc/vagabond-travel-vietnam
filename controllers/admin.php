@@ -24,12 +24,26 @@ class Admin_Controller extends HKL_Controller{
 		parent::__construct();
 		$this->model->Model('Intro_introModel');
 		$this->newModel = new Intro_Model();
-		$intro = $this -> newModel -> getIntroAll();
-		if($type == 'add'){
-			include(DIR_VIEW_ENTERPRISE.'/admin/intro/add.html');
-		}
-		else
-			include(DIR_VIEW_ENTERPRISE.'/admin/intro/intro.html');
+		if($_POST){
+			//DB::Debug();
+			$intro_id = abs(intval($_POST['intro_id']));
+			$intro_record = $_POST;
+			$intro_record['id'] = $intro_id;
+			$intro_arr = Table::Fetch('intro',$intro_id);
+			$insert = array('ten_dia_diem','title','gioi_thieu','hinh_dai_dien','hinh_1','hinh_2','hinh_3');
+			$intro_record['hinh_dai_dien'] = upload_image_dir('hinh_dai_dien', 'intro');
+			$intro_record['hinh_1'] = upload_image_dir('hinh_1',$intro_arr['hinh_1'], 'intro');
+			$intro_record['hinh_2'] = upload_image_dir('hinh_2', 'intro');
+			$intro_record['hinh_3'] = upload_image_dir('hinh_3', 'intro');
+			$table = new Table('intro', $intro_record);
+			
+			if($intro_id > 0)
+				$table -> update($insert);
+			else 
+				$table -> insert($insert);
+		}	
+		$intro = $this -> newModel -> getIntroAll();		
+		include(DIR_VIEW_ENTERPRISE.'/admin/intro/intro.html');		
 	}
 	public function dichvu($type)
 	{

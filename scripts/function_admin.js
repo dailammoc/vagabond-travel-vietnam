@@ -4,11 +4,77 @@
 $(document).ready(function(){
 	$('#submit-login').click(function(){
 		if($('#user_name').val() == 'admin' && $('#password').val() == 'admin')
-			window.location = "admin/dichvu";
+			window.location = "admin/intro";
 	});
 });
 
 function intro(intro_id){
-	$('.basic-modal-content').modal({minWidth: 870,minHeight:500,overlayClose:true});
+	$('.basic-modal-content').modal({minWidth: 700,minHeight:500,overlayClose:true});
 	$('.basic-modal-content').load(URL_HOME_ENTERPRISE + '/Views/admin/intro/add.php?intro_id='+intro_id);
 }
+function edit(intro_id_){
+	if(parseInt(intro_id_) > 0)
+		action_ = "edit";
+	else
+		action_ = "add";
+	$.ajax({
+		type:"POST",
+		url : DIR_AJAX_TRAVEL + "/actionAjaxAdmin.php",
+		data:{
+			action : action_,
+			intro_id : intro_id_,
+			hoten : $('#hoten_order').val(),
+			email : $('#email_order').val(),
+			dienthoai : $('#dienthoai_order').val(),
+			tour_id : $('#tour_id_hidden').val(),
+		},
+		success:function(respond){
+			if(respond == 1)
+				alert("Đặt vé thành công - Xin cảm ơn bạn");
+			else
+				alert("Đặt vé thất bại - Mời thử lại");
+		}		
+	});
+}
+$(document).ready(function(){
+	var pathnames = window.location.pathname;
+	var filename = pathnames.substring(pathnames.lastIndexOf('/')+1);
+	switch (filename)
+	{
+	
+	case 'intro':
+		
+		$('.table .select:eq(0)').addClass('current');
+		$('.table .select:eq(0)').removeClass('select');
+		break;
+		
+	case 'dichvu':
+		$('.table .select:eq(1)').addClass('current');
+		$('.table .select:eq(1)').removeClass('select');
+		break;
+	case 'tour':
+		$('.table .select:eq(2)').addClass('current');
+		$('.table .select:eq(2)').removeClass('select');
+		break;
+	case 'vemaybay':
+		$('.menuT ul li:eq(0) a').removeClass('active');
+		$('.categories ul li:eq(3) a').addClass('active');
+		break;
+	case 'dichvu':
+		$('.menuT ul li:eq(0) a').removeClass('active');
+		$('.categories ul li:eq(4) a').addClass('active');
+		break;
+	case 'nhatky':
+		$('.menuT ul li:eq(0) a').removeClass('active');
+		$('.categories ul li:eq(5) a').addClass('active');
+		break;
+	case 'gioithieu':
+		$('.menuT ul li:eq(0) a').removeClass('active');
+		$('.menuT ul li:eq(1) a').addClass('active');
+		break;
+	case 'lienhe':
+		$('.menuT ul li:eq(0) a').removeClass('active');
+		$('.menuT ul li:eq(2) a').addClass('active');
+		break;
+	};
+});
