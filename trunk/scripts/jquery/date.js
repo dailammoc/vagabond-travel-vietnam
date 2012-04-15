@@ -475,6 +475,7 @@ Date.fullYearStart = '20';
 		var result = s.match(dm);
 		for (var i=0; i<order.length; i++) {
 			var res = result[i+1];
+			
 			switch(order[i]) {
 				case 'd':
 					d.setDate(res);

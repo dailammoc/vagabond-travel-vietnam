@@ -9,14 +9,15 @@
 <![endif]-->
 
 <!--  jquery core -->
-<script src="<?php echo DIR_JS_ENTERPRISE ?>jquery/jquery-1.4.1.min.js" type="text/javascript"></script>
+<script src="<?php echo DIR_JS_ENTERPRISE ?>jquery-latest.js" type="text/javascript"></script>
  <script>
 	var DIR_AJAX_TRAVEL = "<?php echo DIR_AJAX_TRAVEL ?>";
 	var URL_HOME_ENTERPRISE = "<?php echo URL_HOME_ENTERPRISE ?>";
 </script>
 <!--  checkbox styling script -->
-<script src="<?php echo DIR_JS_ENTERPRISE ?>jquery/ui.core.js" type="text/javascript"></script>
-<script src="<?php echo DIR_JS_ENTERPRISE ?>jquery/ui.checkbox.js" type="text/javascript"></script>
+<!--<script src="<?php echo DIR_JS_ENTERPRISE ?>jquery/ui.core.js" type="text/javascript"></script>-->
+<script src="<?php echo DIR_JS_ENTERPRISE ?>jquery.ui.core.js" type="text/javascript"></script>
+<!--<script src="<?php echo DIR_JS_ENTERPRISE ?>jquery/ui.checkbox.js" type="text/javascript"></script>-->
 <script src="<?php echo DIR_JS_ENTERPRISE ?>jquery/jquery.bind.js" type="text/javascript"></script>
 <script src="<?php echo DIR_JS_ENTERPRISE ?>function_admin.js" type="text/javascript"></script>
 <script src="<?php echo DIR_JS_ENTERPRISE ?>jquery.simplemodal.js"></script> 
@@ -24,11 +25,11 @@
 <link rel="stylesheet" href="<?php echo DIR_CSS_ENTERPRISE ?>admin.css" type="text/css" />
 <script type="text/javascript">
 $(function(){
-	$('input').checkBox();
+	//$('input').checkBox();
 	$('#toggle-all').click(function(){
- 	$('#toggle-all').toggleClass('toggle-checked');
-	$('#mainform input[type=checkbox]').checkBox('toggle');
-	return false;
+ 		$('#toggle-all').toggleClass('toggle-checked');
+		$('#mainform input[type=checkbox]').checkBox('toggle');
+		return false;
 	});
 });
 </script>  
@@ -70,7 +71,7 @@ $(document).ready(function() {
 <script type="text/javascript" charset="utf-8">
 $(function() {
 	$("input.file_1").filestyle({ 
-	image: "images/forms/upload_file.gif",
+	image: URL_HOME_ENTERPRISE + "/images/forms/upload_file.gif",
 	imageheight : 29,
 	imagewidth : 78,
 	width : 300
@@ -112,7 +113,7 @@ $('#date-pick')
 		// associate the link with a date picker
 		{
 			createButton:false,
-			startDate:'01/01/2005',
+			startDate:'01/01/2012',
 			endDate:'31/12/2020'
 		}
 	).bind(
@@ -138,13 +139,50 @@ $('#date-pick')
 			updateSelects(selected[0]);
 		}
 	);
-	
+$('#date-pick1')
+.datePicker(
+	// associate the link with a date picker
+	{
+		createButton:false,
+		startDate:'01/01/2012',
+		endDate:'31/12/2020'
+	}
+).bind(
+	// when the link is clicked display the date picker
+	'click',
+	function()
+	{
+		updateSelects1($(this).dpGetSelected()[0]);
+		$(this).dpDisplay();
+		return false;
+	}
+).bind(
+	// when a date is selected update the SELECTs
+	'dateSelected',
+	function(e, selectedDate, $td, state)
+	{
+		updateSelects1(selectedDate);
+	}
+).bind(
+	'dpClosed',
+	function(e, selected)
+	{
+		updateSelects1(selected[0]);
+	}
+);	
 var updateSelects = function (selectedDate)
 {
 	var selectedDate = new Date(selectedDate);
 	$('#d option[value=' + selectedDate.getDate() + ']').attr('selected', 'selected');
 	$('#m option[value=' + (selectedDate.getMonth()+1) + ']').attr('selected', 'selected');
 	$('#y option[value=' + (selectedDate.getFullYear()) + ']').attr('selected', 'selected');
+}
+var updateSelects1 = function (selectedDate)
+{
+	var selectedDate = new Date(selectedDate);
+	$('#d1 option[value=' + selectedDate.getDate() + ']').attr('selected', 'selected');
+	$('#m1 option[value=' + (selectedDate.getMonth()+1) + ']').attr('selected', 'selected');
+	$('#y1 option[value=' + (selectedDate.getFullYear()) + ']').attr('selected', 'selected');
 }
 // listen for when the selects are changed and update the picker
 $('#d, #m, #y')
@@ -160,13 +198,26 @@ $('#d, #m, #y')
 			$('#date-pick').dpSetSelected(d.asString());
 		}
 	);
-
+$('#d1, #m1, #y1')
+.bind(
+	'change',
+	function()
+	{
+		var d = new Date(
+					$('#y1').val(),
+					$('#m1').val()-1,
+					$('#d1').val()
+				);
+		$('#date-pick1').dpSetSelected(d.asString());
+	}
+);
 // default the position of the selects to today
 var today = new Date();
 updateSelects(today.getTime());
+updateSelects1(today.getTime());
 
 // and update the datePicker to reflect it...
-$('#d').trigger('change');
+$('#d,#d1').trigger('change');
 });
 </script>
 

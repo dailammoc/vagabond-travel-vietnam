@@ -1,10 +1,12 @@
 <?php $this->load->view("admin/header/header.html")?>
 <!--  start page-heading -->
-	<div id="page-heading">
-		<h1>Loại Tour</h1>
-	</div>
 	<!-- end page-heading -->
-
+	<div class="buttons" style="margin-left:43px">
+			<button class="positive" name="save" type="submit" onclick="add_loaitour()">
+			<img alt="" src="<?php echo DIR_IMG_ENTERPRISE ?>add.jpg">
+			Add
+			</button>
+		</div>
 	<table border="0" width="100%" cellpadding="0" cellspacing="0" id="content-table">
 	<tr>
 		<th rowspan="3" class="sized"><img src="<?php echo DIR_IMG_ENTERPRISE ?>shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
@@ -28,12 +30,12 @@
 		 
 				<!--  start product-table ..................................................................................... -->
 				<form id="mainform" action="">
-				<table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
+				<table border="0" width="50%" cellpadding="0" cellspacing="0" id="product-table">
 				<tr>
 					<th class="table-header-check"><a id="toggle-all" ></a> </th>
-					<th class="table-header-repeat line-left minwidth-1"><a href="">ID</a>	</th>
-					<th class="table-header-repeat line-left minwidth-1"><a href="">Tên</a></th>										
-					<th class="table-header-repeat line-left"><a href="">Option</a></th>										
+					<th class="table-header-repeat line-left"><a>STT</a>	</th>
+					<th class="table-header-repeat line-left minwidth-1"><a>Tên</a></th>										
+					<th class="table-header-repeat line-left"><a>Option</a></th>										
 				</tr>
 				<?php $i = 0;if(count($loaitour) > 0)foreach($loaitour as $index => $one) { $i ++;?>
 					<tr class="<?php echo ($i %2 == 0) ? 'alternate-row' : '' ?>">

@@ -12,6 +12,68 @@ function intro(intro_id){
 	$('.basic-modal-content').modal({minWidth: 700,minHeight:500,overlayClose:true});
 	$('.basic-modal-content').load(URL_HOME_ENTERPRISE + '/Views/admin/intro/add.php?intro_id='+intro_id);
 }
+function add_loaitour(tour_id){
+	$('.basic-modal-content').modal({minWidth: 700,minHeight:500,overlayClose:true});
+	$('.basic-modal-content').load(URL_HOME_ENTERPRISE + '/Views/admin/tour/add_loaitour.php?tour_id='+tour_id);
+}
+function add_phuongtien(phuongtien_id){
+	$('.basic-modal-content').modal({minWidth: 700,minHeight:500,overlayClose:true});
+	$('.basic-modal-content').load(URL_HOME_ENTERPRISE + '/Views/admin/tour/add_phuongtien.php?phuongtien_id='+phuongtien_id);
+}
+function add_diem(loai,loai_diem_id){
+	$('.basic-modal-content').modal({minWidth: 700,minHeight:500,overlayClose:true});
+	$('.basic-modal-content').load(URL_HOME_ENTERPRISE + '/Views/admin/tour/add_diem.php?loai='+loai+'&loai_diem_id='+loai_diem_id);
+}
+function delete_record(type_,record_id_){
+	name = confirm ("Bạn Có Chắc Chắn Xóa ?");
+	if(name){
+		$.ajax({
+			type:"POST",
+			url : DIR_AJAX_TRAVEL + "/actionAjaxAdmin.php",
+			data:{
+				action : "delete",
+				record_id : record_id_,
+				type : type_
+			},
+			success:function(respond){
+				if(respond == 1)
+					alert("Xóa hành công");
+				else
+					alert("Xóa thất bại");
+			}		
+		});
+	}
+}
+function delete_muti(type_){
+	//var obj = jQuery.parseJSON('{"test":"John"}');
+	name = confirm ("Bạn Có Chắc Chắn Xóa ?");
+	if(name){
+		//var arr_id = new Array();
+		arr_id = '';
+		$.each($('#mainform input[type=checkbox]'),function(){ 
+		    if($(this).is(':checked')){
+		    	arr_id += $(this).val() + ',';
+		    	//alert($(this).val());
+		    }
+
+		});
+		$.ajax({
+			type:"POST",
+			url : DIR_AJAX_TRAVEL + "/actionAjaxAdmin.php",
+			data:{
+				action : "delete",
+				record_id : arr_id,
+				type : type_
+			},
+			success:function(respond){
+				if(respond == 1)
+					alert("Xóa hành công");
+				else
+					alert("Xóa th?t b?i");
+			}		
+		});
+	}
+}
 function edit(intro_id_){
 	if(parseInt(intro_id_) > 0)
 		action_ = "edit";
