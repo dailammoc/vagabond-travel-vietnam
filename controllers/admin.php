@@ -114,10 +114,33 @@ class Admin_Controller extends HKL_Controller{
 		$phuongtien = $this -> newModel -> getLoaiPhuongTienAll();
 		$phuongtien = array_combine(Utility::GetColumn($phuongtien,'id'), Utility::GetColumn($phuongtien,'ten_phuong_tien'));
 		if($type == 'loaitour'){
+			if($_POST){
+				$loai_tour_record = $_POST;
+				$loai_tour_record['id'] = abs(intval($_POST['phuongtien_id']));
+				$loai_tour_record['ten_phuong_tien'] = $_POST['ten_phuong_tien'];				
+				$insert = array('ten_phuong_tien');
+				$table = new Table('loai_phuong_tien', $loai_tour_record);
+				if($loai_tour_record['id'] > 0)
+					$table -> update($insert);
+				else 
+					$table -> insert($insert);
+			}
+			
 			$loaitour = $this -> newModel -> getLoaiTour();
 			include(DIR_VIEW_ENTERPRISE.'/admin/tour/loaitour.html');
 		}
 		if($type == 'phuongtien'){
+			if($_POST){
+				$loai_tour_record = $_POST;
+				$loai_tour_record['id'] = abs(intval($_POST['phuongtien_id']));
+				$loai_tour_record['ten_phuong_tien'] = $_POST['ten_phuong_tien'];				
+				$insert = array('ten_phuong_tien');
+				$table = new Table('loai_phuong_tien', $loai_tour_record);
+				if($loai_tour_record['id'] > 0)
+					$table -> update($insert);
+				else 
+					$table -> insert($insert);
+			}
 			$phuongtien = $this -> newModel -> getLoaiPhuongTienAll();
 			include(DIR_VIEW_ENTERPRISE.'/admin/tour/phuongtien.html');
 		}
@@ -130,6 +153,15 @@ class Admin_Controller extends HKL_Controller{
 			include(DIR_VIEW_ENTERPRISE.'/admin/tour/diemden.html');
 		}
 		if($type == 'add'){
+			$diemkhoihanh = $this -> newModel -> getDiemKhoiHanh();
+			$diemkhoihanh = array_combine(Utility::GetColumn($diemkhoihanh,'id'), Utility::GetColumn($diemkhoihanh,'ten_dia_diem'));
+		
+			$diemden = $this -> newModel -> getDiemDen();
+			$diemden = array_combine(Utility::GetColumn($diemden,'id'), Utility::GetColumn($diemden,'ten_dia_diem'));
+			
+			$phuongtien = $this -> newModel -> getLoaiPhuongTienAll();
+			$phuongtien = array_combine(Utility::GetColumn($phuongtien,'id'), Utility::GetColumn($phuongtien,'ten_phuong_tien'));
+			
 			include(DIR_VIEW_ENTERPRISE.'/admin/tour/add.html');
 		}
 		if($type == 'vemaybay'){
