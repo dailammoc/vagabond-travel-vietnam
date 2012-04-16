@@ -102,17 +102,7 @@ class Admin_Controller extends HKL_Controller{
 		parent::__construct();
 		$this->model->Model('Tour_tourModel');
 		$this->newModel = new Tour_Model();
-		$tour = $this -> newModel -> getTour();
-		$loaitour = $this -> newModel -> getLoaiTour();
-		$loaitour = array_combine(Utility::GetColumn($loaitour,'id'), Utility::GetColumn($loaitour,'ten_loai'));
-		$diemkhoihanh = $this -> newModel -> getDiemKhoiHanh();
-		$diemkhoihanh = array_combine(Utility::GetColumn($diemkhoihanh,'id'), Utility::GetColumn($diemkhoihanh,'ten_dia_diem'));
 		
-		$diemden = $this -> newModel -> getDiemDen();
-		$diemden = array_combine(Utility::GetColumn($diemden,'id'), Utility::GetColumn($diemden,'ten_dia_diem'));
-		
-		$phuongtien = $this -> newModel -> getLoaiPhuongTienAll();
-		$phuongtien = array_combine(Utility::GetColumn($phuongtien,'id'), Utility::GetColumn($phuongtien,'ten_phuong_tien'));
 		if($type == 'loaitour'){
 			if($_POST){
 				$loai_tour_record = $_POST;
@@ -171,8 +161,53 @@ class Admin_Controller extends HKL_Controller{
 			$vemaybay = $this -> newModel -> getLoaiVeMayBay();
 			include(DIR_VIEW_ENTERPRISE.'/admin/tour/vemaybay.html');
 		}
-		if($type == '')
+		if($type == ''){
+		if($_POST){
+				//DB::Debug();
+				//print_r($_POST);
+				$tour = $_POST;
+				$tour['id'] = abs(intval($_POST['tour_id']));
+				$tour_arr = Table::Fetch('tour',$tour['id']);
+				$tour['gio_di'] = strtotime($_POST['gio_di']);
+				$tour['gio_den'] = strtotime($_POST['gio_den']);
+				
+				$d = $_POST['d_ngaydi'];
+				$m = $_POST['m_ngaydi'];
+				$y = $_POST['y_ngaydi'];
+				$string = $d."-".$m."-".$y;
+				$tour['ngay_di'] = strtotime($string);
+				
+				$d = $_POST['d_ngayve'];
+				$m = $_POST['m_ngayve'];
+				$y = $_POST['y_ngayve'];
+				$string = $d."-".$m."-".$y;
+				$tour['ngay_ve'] = strtotime($string);
+				
+				$gia_tour = $_POST['gia_tour'];
+				$gia_tour = str_replace('.', '', $gia_tour);
+				$tour['gia_tour'] = intval($gia_tour);
+				$tour['hinh'] = upload_image_dir('hinh',$tour['hinh'], 'tour');
+				$tour['date_create'] = time();
+				$insert = array('id_loai_tour','title','slogon_tour','intro','content','so_ngay','ngay_di','ngay_ve','gio_di','gio_den','id_diem_khoi_hanh','id_diem_den','gia_tour','id_phuong_tien','ma_so_phuong_tien','hinh','max_so_nguoi','min_so_nguoi','date_create');
+				$table = new Table('tour', $tour);			
+				if($tour['id'] > 0)
+					$table -> update($insert);
+				else 
+					$table -> insert($insert);
+			}
+			$tour = $this -> newModel -> getTour();
+			$loaitour = $this -> newModel -> getLoaiTour();
+			$loaitour = array_combine(Utility::GetColumn($loaitour,'id'), Utility::GetColumn($loaitour,'ten_loai'));
+			$diemkhoihanh = $this -> newModel -> getDiemKhoiHanh();
+			$diemkhoihanh = array_combine(Utility::GetColumn($diemkhoihanh,'id'), Utility::GetColumn($diemkhoihanh,'ten_dia_diem'));
+			
+			$diemden = $this -> newModel -> getDiemDen();
+			$diemden = array_combine(Utility::GetColumn($diemden,'id'), Utility::GetColumn($diemden,'ten_dia_diem'));
+			
+			$phuongtien = $this -> newModel -> getLoaiPhuongTienAll();
+			$phuongtien = array_combine(Utility::GetColumn($phuongtien,'id'), Utility::GetColumn($phuongtien,'ten_phuong_tien'));
 			include(DIR_VIEW_ENTERPRISE.'/admin/tour/tour.html');
+		}
 	}
 	public function thongtin($type){
 		parent::__construct();

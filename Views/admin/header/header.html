@@ -9,7 +9,7 @@
 <![endif]-->
 
 <!--  jquery core -->
-<script src="<?php echo DIR_JS_ENTERPRISE ?>jquery-latest.js" type="text/javascript"></script>
+<script src="<?php echo DIR_JS_ENTERPRISE ?>jquery/jquery-1.4.1.min.js" type="text/javascript"></script>
  <script>
 	var DIR_AJAX_TRAVEL = "<?php echo DIR_AJAX_TRAVEL ?>";
 	var URL_HOME_ENTERPRISE = "<?php echo URL_HOME_ENTERPRISE ?>";
@@ -212,10 +212,11 @@ $('#d1, #m1, #y1')
 	}
 );
 // default the position of the selects to today
+<?php if(!$_GET['tour_id']){?>
 var today = new Date();
 updateSelects(today.getTime());
 updateSelects1(today.getTime());
-
+<?php }?>
 // and update the datePicker to reflect it...
 $('#d,#d1').trigger('change');
 });

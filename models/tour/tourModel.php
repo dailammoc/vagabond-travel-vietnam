@@ -1,7 +1,9 @@
 <?php
 class Tour_Model{
 	public function getTour(){
-		$tour = DB::LimitQuery('tour');
+		$tour = DB::LimitQuery('tour',array(
+		'order' => 'ORDER BY id DESC'
+		));
 		return $tour;
 	}
 	public function getLoaiTour(){
