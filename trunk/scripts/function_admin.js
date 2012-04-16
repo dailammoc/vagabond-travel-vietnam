@@ -24,6 +24,10 @@ function add_diem(loai,loai_diem_id){
 	$('.basic-modal-content').modal({minWidth: 700,minHeight:500,overlayClose:true});
 	$('.basic-modal-content').load(URL_HOME_ENTERPRISE + '/Views/admin/tour/add_diem.php?loai='+loai+'&loai_diem_id='+loai_diem_id);
 }
+function detail_tour(tour_id){
+	$('.basic-modal-content').modal({minWidth: 700,minHeight:500,overlayClose:true});
+	$('.basic-modal-content').load(URL_HOME_ENTERPRISE + '/Views/admin/tour/add_loaitour.php?tour_id='+tour_id);
+}
 function delete_record(type_,record_id_){
 	name = confirm ("Bạn Có Chắc Chắn Xóa ?");
 	if(name){

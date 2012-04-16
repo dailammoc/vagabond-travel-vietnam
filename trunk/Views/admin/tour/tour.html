@@ -36,14 +36,15 @@
 				<table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
 				<tr>
 					<th class="table-header-check"><a id="toggle-all" ></a> </th>
-					<th class="table-header-repeat line-left minwidth-1"><a href="">Tiêu Đề</a>	</th>
-					<th class="table-header-repeat line-left minwidth-1"><a href="">Loại Tour</a></th>
+					<th class="table-header-repeat line-left"><a href="">Id</a>	</th>
+					<th class="table-header-repeat line-left minwidth-1"><a href="">Tên Tour</a>	</th>
+					<th class="table-header-repeat line-left minwidth-1"><a href="">Loại</a></th>
 					<th class="table-header-repeat line-left minwidth-1"><a href="">Ngày Đi</a></th>
 					<th class="table-header-repeat line-left minwidth-1"><a href="">Ngày Về</a></th>
-					<th class="table-header-repeat line-left minwidth-1"><a href="">Giá</a></th>
-					<th class="table-header-repeat line-left"><a href="">Phương Tiện</a></th>
-					<th class="table-header-repeat line-left"><a href="">Số Người</a></th>
-					<th class="table-header-repeat line-left"><a href="">Lượt Xem</a></th>
+					<th class="table-header-repeat line-left"><a href="">Giá</a></th>
+					<th class="table-header-repeat line-left minwidth-1"><a href="">Phương Tiện</a></th>
+					<th class="table-header-repeat line-left"><a href="">ĐặtChỗ</a></th>
+					<th class="table-header-repeat line-left"><a href="">Xem</a></th>
 					<th class="table-header-repeat line-left minwidth-1"><a href="">Ngày Tạo</a></th>
 					
 					<th class="table-header-repeat line-left minwidth-1"><a href="">Option</a></th>
@@ -52,18 +53,20 @@
 				<?php $i = 0;if(count($tour) > 0)foreach($tour as $index => $one) { $i ++;?>
 					<tr class="<?php echo ($i %2 == 0) ? 'alternate-row' : '' ?>">
 					<td><input  type="checkbox"/></td>
+					<td><?php echo $one['id']?></td>
 					<td><?php echo $one['title']?></td>
 					<td><?php echo $loaitour[$one['id_loai_tour']]?></td>
-					<td><?php echo date('d-m-Y',$one['ngay_di'])."<br />".date('h:m',$one['ngay_di'])."<br />".$diemkhoihanh[$one['id_diem_khoi_hanh']]; ?></td>
-					<td><?php echo date('d-m-Y',$one['ngay_ve'])."<br />".date('h:m',$one['ngay_ve'])."<br />".$diemkhoihanh[$one['id_diem_den']]; ?></td>
+					<td><?php echo date('d-m-Y',$one['ngay_di'])."<br /><i style='color:red'>".date('h:i',$one['gio_di'])."</i>-<i style='color:blue'>".date('h:i',$one['gio_den'])."</i><br /><i style='color:green'>".$diemkhoihanh[$one['id_diem_khoi_hanh']]; ?></td>
+					<td><?php echo date('d-m-Y',$one['ngay_ve'])."<br /><br /><i style='color:red'>".$diemkhoihanh[$one['id_diem_den']]; ?></td>
 					<td><?php echo $one['gia_tour']?></td>
 					<td><?php echo $phuongtien[$one['id_phuong_tien']]."<br />".$one['ma_so_phuong_tien']?></td>
-					<td><?php echo "Min :".$one['min_so_nguoi']."<br />"."Max :".$one['max_so_nguoi']?></td>
+					<td><?php echo $one['order']?></td>
 					<td><?php echo $one['luot_xem']?></td>
 					<td><?php echo date('d-m-Y',$one['date_create'])?></td>
 					<td class="options-width">
-					<a href="" title="Edit" class="icon-1 info-tooltip"></a>
-					<a href="" title="Delete" class="icon-2 info-tooltip"></a>
+					<a href="" title="Chi Tiết" class="icon-1 info-tooltip"></a>
+					<a href="tour/add?tour_id=<?php echo $one['id']?>" target="_blank" title="Sửa" class="icon-1 info-tooltip"></a>
+					<a href="" title="Xóa" class="icon-2 info-tooltip"></a>
 					
 					</td>
 					<td><input  type="checkbox"/></td>
