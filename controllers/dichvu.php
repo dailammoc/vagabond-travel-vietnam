@@ -7,10 +7,10 @@ class Dichvu_Controller extends HKL_Controller{
 		parent::__construct();
 		$this->model->Model('Dichvu_dichvuModel');
 		$this->dichvuModel = new Dichvu_Model();
+		$_SESSION['sdt_travel_viendang'] = "08.3838.6969<br/>Ext:   227";
 	}
 	public function index()
-	{
-		
+	{	
 		$loai_dich_vu = $this -> dichvuModel -> getLoaiDichVu();
 		$ten_dich_vu = array_combine(Utility::GetColumn($loai_dich_vu,'id'), Utility::GetColumn($loai_dich_vu,'ten_dich_vu'));
 		$dich_vu = 	$this -> dichvuModel -> getDichVu();

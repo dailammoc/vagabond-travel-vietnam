@@ -24,4 +24,18 @@ class Duhoc_Model{
 		));
 		return $dieucanbiet;
 	}
+	public function getVisa(){
+		$visa = db::LimitQuery('du_hoc_detail',array(
+				'condition' => array('id_du_hoc' => 4),
+				//'one' => true
+			));
+		return $visa;
+	}
+	public function getNews(){
+		$news = db::LimitQuery('du_hoc_detail',array(
+				'condition' => array('id_du_hoc' => 5),
+				//'one' => true
+			));
+		return $news;
+	}
 }

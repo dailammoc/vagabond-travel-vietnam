@@ -1,15 +1,33 @@
 <?php $this->load->view("admin/header/header.html")?>
+<script type="text/javascript">
+$(function(){
+	$('input').checkBox();
+	$('#toggle-all').click(function(){
+ 		$('#toggle-all').toggleClass('toggle-checked');
+		//$('#mainform input[type=checkbox]').checkBox('toggle');
+		$('#mainform .cb_select').checkBox('toggle');
+		return false;
+	});
+	
+	$('#hide-all').click(function(){
+ 		$('#hide-all').toggleClass('toggle-checked');
+		//$('#mainform input[type=checkbox]').checkBox('toggle');
+		$('#mainform .cb_hide').checkBox('toggle');
+		return false;
+	});
+});
+</script>  
 <!--  start page-heading -->
 	
 	<!-- end page-heading -->
-	<form action="add" method = "POST">
-	<div class="buttons" style="margin-left:43px">
+	
+	<a href="tour/add"><div class="buttons" style="margin-left:43px">
 			<button class="positive" name="save" type="submit">
 			<img alt="" src="<?php echo DIR_IMG_ENTERPRISE ?>add.jpg">
 			Add
 			</button>
-		</div>
-	</form>
+		</div></a>
+	
 	<table border="0" width="100%" cellpadding="0" cellspacing="0" id="content-table">
 	<tr>
 		<th rowspan="3" class="sized"><img src="<?php echo DIR_IMG_ENTERPRISE ?>shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
@@ -26,10 +44,17 @@
 		
 			<!--  start table-content  -->
 			<div id="table-content">
-			
+				<?php if(isset($_SESSION['notify'])){?>
 				<!--  start message-yellow -->
-				
-		
+				<div id="message-<?php echo $_SESSION['notify_color']?>">
+				<table border="0" width="100%" cellpadding="0" cellspacing="0">
+				<tr>
+					<td class="<?php echo $_SESSION['notify_color']?>-left"><?php echo $_SESSION['notify']?></td>
+					<td class="<?php echo $_SESSION['notify_color']?>-right"><a class="close-<?php echo $_SESSION['notify_color']?>"><img src="<?php echo DIR_IMG_ENTERPRISE ?>table/icon_close_<?php echo $_SESSION['notify_color']?>.gif"   alt="" /></a></td>
+				</tr>
+				</table>
+				</div>
+				<?php }?>
 		 
 				<!--  start product-table ..................................................................................... -->
 				<form id="mainform" action="">
@@ -48,28 +73,28 @@
 					<th class="table-header-repeat line-left minwidth-1"><a href="">Ngày Tạo</a></th>
 					
 					<th class="table-header-repeat line-left minwidth-1"><a href="">Option</a></th>
-					<th class="table-header-repeat line-left"><a href="">Hide</a></th>					
+					<th class="table-header-check" style="color:white">Hide<a id="hide-all"></a></th>					
 				</tr>
 				<?php $i = 0;if(count($tour) > 0)foreach($tour as $index => $one) { $i ++;?>
 					<tr class="<?php echo ($i %2 == 0) ? 'alternate-row' : '' ?>">
-					<td><input  type="checkbox"/></td>
+					<td><input  class="cb_select"type="checkbox"/></td>
 					<td><?php echo $one['id']?></td>
 					<td><?php echo $one['title']?></td>
 					<td><?php echo $loaitour[$one['id_loai_tour']]?></td>
 					<td><?php echo date('d-m-Y',$one['ngay_di'])."<br /><i style='color:red'>".date('h:i',$one['gio_di'])."</i>-<i style='color:blue'>".date('h:i',$one['gio_den'])."</i><br /><i style='color:green'>".$diemkhoihanh[$one['id_diem_khoi_hanh']]; ?></td>
 					<td><?php echo date('d-m-Y',$one['ngay_ve'])."<br /><br /><i style='color:red'>".$diemkhoihanh[$one['id_diem_den']]; ?></td>
 					<td><?php echo $one['gia_tour']?></td>
-					<td><?php echo $phuongtien[$one['id_phuong_tien']]."<br />".$one['ma_so_phuong_tien']?></td>
+					<td><?php echo $phuongtien[$one['id_phuong_tien']]."<br /><i style='color:blue'>".$one['ma_so_phuong_tien']?></i></td>
 					<td><?php echo $one['order']?></td>
 					<td><?php echo $one['luot_xem']?></td>
 					<td><?php echo date('d-m-Y',$one['date_create'])?></td>
 					<td class="options-width">
-					<a href="" title="Chi Tiết" class="icon-1 info-tooltip"></a>
+					<a href="javascript:detail_tour(<?php echo $one['id']?>)" title="Chi Tiết" class="icon-5 info-tooltip"></a>
 					<a href="tour/add?tour_id=<?php echo $one['id']?>" target="_blank" title="Sửa" class="icon-1 info-tooltip"></a>
 					<a href="" title="Xóa" class="icon-2 info-tooltip"></a>
 					
 					</td>
-					<td><input  type="checkbox"/></td>
+					<td><input  class="cb_hide"type="checkbox"/></td>
 				</tr>
 				<?php } ?>
 				</table>
@@ -83,8 +108,8 @@
 				<a href="" class="action-slider"></a>
 				<div id="actions-box-slider">
 					
-					<a href="" class="action-delete">Delete</a>
-					<a href="" class="action-delete">Hide</a>
+					<a href="javascript:delete_muti('tour')" class="action-delete">Delete</a>
+					<a href="javascript:hide_muti('tour')" class="action-delete">Hide</a>
 				</div>
 				<div class="clear"></div>
 			</div>
