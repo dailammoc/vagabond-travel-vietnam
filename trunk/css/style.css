@@ -91,7 +91,7 @@ a:hover { color:#b10c13; text-decoration:none}
 .bottom4 { background:url(../images/bg/bg_bottomBox4.png) no-repeat -1px bottom; height:7px}
 .titleR { font-weight:bold; text-transform:uppercase; color:#226794; text-shadow:1px 1px 1px #1b7cbb; font-size:11px; padding:5px 0}
 .top2 { background:url(../images/bg/bg_topBox2.png) no-repeat left; height:30px; line-height:30px; position:relative}
-.bgT3 { background:url(../images/bg/bg_celendar.png) repeat-y left}
+.bgT3 { background:url(../images/bg/bg_celendar1.png) repeat-y left; background-color:#3CC1E0}
 .bottom2 { background:url(../images/bg/bg_bottomBox2.png) no-repeat -1px bottom; height:7px}
 .top2 .titleR { padding:5px 15px; }
 .nn { background:url(../images/ico/ico_np.png) no-repeat left; width:15px; height:13px; display:inline-block; position:absolute; top:10px; right:30px}
@@ -119,7 +119,7 @@ a:hover { color:#b10c13; text-decoration:none}
 
 .boxNewsTick { background:#b6b6b8 url(../images/bg/bg_gray.png) repeat-x top; border:1px solid #868686; padding:10px}
 .boxNewsTick .titleALl { color:#296993; font-weight:bold; margin:0 0 5px; padding:0; font-size:14px}
-.boxNewsTick .col { float:left; width:48%; padding-right:2%; height:172px; overflow:hidden; margin-bottom:10px}
+.boxNewsTick .col { float:left; width:48%; padding-right:2%;  overflow:hidden; margin-bottom:10px}
 .listOther { padding:0}
 .listOther li { background:url(../images/ico/ico_arrList.png) no-repeat left 10px; padding:0px 0 0px 20px; font-size:14px }
 .listOther li a { color:#226794; text-decoration:underline}

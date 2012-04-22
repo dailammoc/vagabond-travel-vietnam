@@ -10,6 +10,7 @@ class Vemaybay_Controller extends HKL_Controller{
 	}
 	public function index()
 	{
+		$_SESSION['sdt_travel_viendang'] = "08.3838.6969<br/>Ext:   115-246-244";
 		$now = time();
 		$diemkhoihanh = $this -> vemaybayModel -> getDiemKhoiHanh();
 		$diemden = $this -> vemaybayModel -> getDiemDen();

@@ -40,6 +40,7 @@
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   border-radius: 5px;
+  background-color : #3CC1E0;
 }
 
 .DynarchCalendar-menu table td div {

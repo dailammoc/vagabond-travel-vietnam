@@ -162,6 +162,10 @@ class Admin_Controller extends HKL_Controller{
 			include(DIR_VIEW_ENTERPRISE.'/admin/tour/vemaybay.html');
 		}
 		if($type == ''){
+			unset($_SESSION['notify']);
+			unset($_SESSION['notify_color']);
+			$filename='tour';
+			$_SESSION['path'] = 'tour';
 		if($_POST){
 				//DB::Debug();
 				//print_r($_POST);
@@ -190,10 +194,16 @@ class Admin_Controller extends HKL_Controller{
 				$tour['date_create'] = time();
 				$insert = array('id_loai_tour','title','slogon_tour','intro','content','so_ngay','ngay_di','ngay_ve','gio_di','gio_den','id_diem_khoi_hanh','id_diem_den','gia_tour','id_phuong_tien','ma_so_phuong_tien','hinh','max_so_nguoi','min_so_nguoi','date_create');
 				$table = new Table('tour', $tour);			
-				if($tour['id'] > 0)
+				if($tour['id'] > 0){
 					$table -> update($insert);
-				else 
+					$_SESSION['notify'] = "Sửa Thành Công";
+					$_SESSION['notify_color'] = "yellow";
+				}
+				else {
 					$table -> insert($insert);
+					$_SESSION['notify'] = "Thêm  Thành Công";
+					$_SESSION['notify_color'] = "blue";
+				}
 			}
 			$tour = $this -> newModel -> getTour();
 			$loaitour = $this -> newModel -> getLoaiTour();

@@ -6,6 +6,12 @@ class Tour_Model{
 		));
 		return $tour;
 	}
+	public function countTourByLoaiTour($id){
+		$count = Table::Count('tour',array(
+			'id_loai_tour' => $id
+		));
+		return $count + 1;
+	}
 	public function getLoaiTour(){
 		$loaitour = DB::LimitQuery('loai_tour');
 		return $loaitour;
@@ -22,9 +28,12 @@ class Tour_Model{
 		$loaiphuongtien = db::LimitQuery('loai_phuong_tien');
 		return $loaiphuongtien;
 	}
-	public function getTourByLoaiTour($id){
+	public function getTourByLoaiTour($id,$offset,$pagesize){
 		$tourByLoaiTour = DB::LimitQuery('tour',array(
-			'condition' => array('id_loai_tour' => $id)
+			'condition' => array('id_loai_tour' => $id),
+			'order' => 'ORDER BY id DESC',
+			'size' => $pagesize,
+			'offset' => $offset,
 		));
 		return $tourByLoaiTour;
 	}

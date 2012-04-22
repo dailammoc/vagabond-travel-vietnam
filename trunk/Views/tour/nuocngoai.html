@@ -14,7 +14,7 @@
                                 <td>Giá (VNĐ)</td>
                                 <td>Ngày đi</td>
                                 <td>Ngày về</td>
-                                <td>Chuyến bay đi</td>
+<!--                                <td>Chuyến bay đi</td>-->
                                 <td>Giờ đi</td>
                                 <td>Giờ đến</td>
                                 <td>Số chỗ còn nhận</td>
@@ -23,15 +23,15 @@
                               <?php foreach($tour as $index => $one) {?>
                               <?php if($one['hide'] == 0) {?>
                               	<tr>                          
-                                <td class="titleT"><a href="chitiet/<?php echo $one['id'] ?>/nuocngoai"><?php echo $diemkhoihanh[$one['id_diem_khoi_hanh']].'-'. $diemden[$one['id_diem_den']]; ?></a></td>
+                                <td class="titleT"><a style="color:black" href="chitiet/<?php echo $one['id'] ?>/nuocngoai"><?php echo $diemkhoihanh[$one['id_diem_khoi_hanh']].'-'. $diemden[$one['id_diem_den']]; ?></a></td>
                                 <td><?php echo $one['so_ngay']?></td>
-                                <td><?php echo $one['gia_tour']."Đ"?></td>
+                                <td><?php echo $one['gia_tour']?></td>
                                 <td><?php echo date('d-m-Y',$one['ngay_di'])?></td>
                                 <td><?php echo date('d-m-Y',$one['ngay_ve'])?></td>
-                                <td><?php echo $one['ma_so_phuong_tien']?></td>
-                                <td><?php echo $one['gio_di']?></td>
-                                <td><?php echo $one['gio_den']?></td>
-                                <td>9<br /><a href="javascript:order_tour(<?php echo $one['id']?>)" class="bntB2">Đặt tour</a>
+<!--                                <td><?php echo $one['ma_so_phuong_tien']?></td>-->
+                                <td><?php echo date('H:i',$one['gio_di'])?></td>
+                                <td><?php echo date('H:i',$one['gio_den'])?></td>
+                                <td>9<br /><a href="javascript:order_tour(<?php echo $one['id']?>)" class="bntB2" style="color:white">ĐặtTour</a>
                               
                                 </td>
                                 
