@@ -45,18 +45,26 @@ class Admin_Controller extends HKL_Controller{
 		$intro = $this -> newModel -> getIntroAll();		
 		include(DIR_VIEW_ENTERPRISE.'/admin/intro/intro.html');		
 	}
-	public function dichvu($type)
+	public function dichvu($type,$param)
 	{
 		parent::__construct();
 		$this->model->Model('Dichvu_dichvuModel');
 		$this->newModel = new Dichvu_Model();
 		unset($_SESSION['notify']);
 		unset($_SESSION['notify_color']);
+		$loaidichvu = $this -> newModel -> getLoaiDichVu();
+		$loaidichvu = array_combine(Utility::GetColumn($loaidichvu,'id'), Utility::GetColumn($loaidichvu,'ten_dich_vu'));
 		if($type == 'add'){
+			$dichvu_id = intval($param);
+			if($dichvu_id > 0)
+				$dichvu = Table::Fetch('dich_vu',$dichvu_id);
+			//$loaidichvu = $this -> newModel -> getLoaiDichVu();
+			//$loaidichvu = array_combine(Utility::GetColumn($loaidichvu,'id'), Utility::GetColumn($loaidichvu,'ten_dich_vu'));
 			include(DIR_VIEW_ENTERPRISE.'/admin/dichvu/add.html');
 		}
 		else if($type == 'loaidichvu'){
-			
+			$dichvu = $this -> newModel -> getLoaiDichVu();
+			include(DIR_VIEW_ENTERPRISE.'/admin/dichvu/loaidichvu.html');
 		}
 		else{
 			if($_POST){
@@ -78,8 +86,8 @@ class Admin_Controller extends HKL_Controller{
 				}
 			}
 			$dichvu = $this -> newModel -> getDichVu();
-			$loaidichvu = $this -> newModel -> getLoaiDichVu();
-			$loaidichvu = array_combine(Utility::GetColumn($loaidichvu,'id'), Utility::GetColumn($loaidichvu,'ten_dich_vu'));
+			//$loaidichvu = $this -> newModel -> getLoaiDichVu();
+			//$loaidichvu = array_combine(Utility::GetColumn($loaidichvu,'id'), Utility::GetColumn($loaidichvu,'ten_dich_vu'));
 			include(DIR_VIEW_ENTERPRISE.'/admin/dichvu/dichvu.html');
 		}
 	}
