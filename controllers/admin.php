@@ -50,14 +50,38 @@ class Admin_Controller extends HKL_Controller{
 		parent::__construct();
 		$this->model->Model('Dichvu_dichvuModel');
 		$this->newModel = new Dichvu_Model();
-		$dichvu = $this -> newModel -> getDichVu();
-		$loaidichvu = $this -> newModel -> getLoaiDichVu();		
-		$loaidichvu = array_combine(Utility::GetColumn($loaidichvu,'id'), Utility::GetColumn($loaidichvu,'ten_dich_vu'));
+		unset($_SESSION['notify']);
+		unset($_SESSION['notify_color']);
 		if($type == 'add'){
 			include(DIR_VIEW_ENTERPRISE.'/admin/dichvu/add.html');
 		}
-		else
+		else if($type == 'loaidichvu'){
+			
+		}
+		else{
+			if($_POST){
+				$dichvu = $_POST;
+				$dichvu['id'] = intval($_POST['dichvu_id']);
+				$dichvu_arr = Table::Fetch('dich_vu',$dichvu['id']);
+				$dichvu['hinh'] = upload_image_dir('hinh',$dichvu_arr['hinh'], 'dichvu');
+				$insert = array('id_loai_dv','title','description','content','hinh');
+				$table = new Table('dich_vu',$dichvu);
+				if($dichvu['id'] >0){
+					$table -> update($insert);
+					$_SESSION['notify'] = "Sửa Thành Công";
+					$_SESSION['notify_color'] = "yellow";
+				}
+				else{
+					$table -> insert($insert);
+					$_SESSION['notify'] = "Thêm  Thành Công";
+					$_SESSION['notify_color'] = "blue";
+				}
+			}
+			$dichvu = $this -> newModel -> getDichVu();
+			$loaidichvu = $this -> newModel -> getLoaiDichVu();
+			$loaidichvu = array_combine(Utility::GetColumn($loaidichvu,'id'), Utility::GetColumn($loaidichvu,'ten_dich_vu'));
 			include(DIR_VIEW_ENTERPRISE.'/admin/dichvu/dichvu.html');
+		}
 	}
 	
 	public function gioithieu()
@@ -77,7 +101,7 @@ class Admin_Controller extends HKL_Controller{
 		$this->model->Model('Donhang_donhangModel');
 		$this->newModel = new Donhang_Model();
 		if($type == 'tour'){
-			DB::Debug();
+			//DB::Debug();
 			$donhang = $this -> newModel -> getDonHangTour();
 			$tour = $this -> newModel -> getTour();
 			$tour = array_combine(Utility::GetColumn($tour,'id'), Utility::GetColumn($tour,'title'));
