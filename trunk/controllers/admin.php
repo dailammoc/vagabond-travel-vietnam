@@ -31,10 +31,10 @@ class Admin_Controller extends HKL_Controller{
 			$intro_record['id'] = $intro_id;
 			$intro_arr = Table::Fetch('intro',$intro_id);
 			$insert = array('ten_dia_diem','title','gioi_thieu','hinh_dai_dien','hinh_1','hinh_2','hinh_3');
-			$intro_record['hinh_dai_dien'] = upload_image_dir('hinh_dai_dien', 'intro');
+			$intro_record['hinh_dai_dien'] = upload_image_dir('hinh_dai_dien',$intro_arr['hinh_dai_dien'], 'intro');
 			$intro_record['hinh_1'] = upload_image_dir('hinh_1',$intro_arr['hinh_1'], 'intro');
-			$intro_record['hinh_2'] = upload_image_dir('hinh_2', 'intro');
-			$intro_record['hinh_3'] = upload_image_dir('hinh_3', 'intro');
+			$intro_record['hinh_2'] = upload_image_dir('hinh_2',$intro_arr['hinh_2'], 'intro');
+			$intro_record['hinh_3'] = upload_image_dir('hinh_3',$intro_arr['hinh_3'], 'intro');
 			$table = new Table('intro', $intro_record);
 			
 			if($intro_id > 0)
@@ -223,8 +223,23 @@ class Admin_Controller extends HKL_Controller{
 		parent::__construct();
 		$this->model->Model('Thongtin_thongtinModel');
 		$this->newModel = new Thongtin_Model();
+		unset($_SESSION['notify']);
+		unset($_SESSION['notify_color']);
 		if($type == 'lienhe'){
 			
+		}
+		if($type == 'gioithieu'){
+			if($_POST){
+				$gioithieu = $_POST;
+				$insert = array('content');
+				$gioithieu['id'] = 1;
+				$table = new Table('gioi_thieu',$gioithieu);
+				$table -> update($insert);
+				$_SESSION['notify'] = "Sửa Thành Công";
+				$_SESSION['notify_color'] = "yellow";
+			}
+			$gioithieu = $this -> newModel -> getGioiThieu();
+			include(DIR_VIEW_ENTERPRISE.'/admin/thongtin/gioithieu.html');
 		}
 	}
 }
