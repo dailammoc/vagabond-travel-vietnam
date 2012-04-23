@@ -50,23 +50,38 @@ class Admin_Controller extends HKL_Controller{
 		parent::__construct();
 		$this->model->Model('Dichvu_dichvuModel');
 		$this->newModel = new Dichvu_Model();
-		unset($_SESSION['notify']);
-		unset($_SESSION['notify_color']);
+		//unset($_SESSION['notify']);
+		//unset($_SESSION['notify_color']);
 		$loaidichvu = $this -> newModel -> getLoaiDichVu();
 		$loaidichvu = array_combine(Utility::GetColumn($loaidichvu,'id'), Utility::GetColumn($loaidichvu,'ten_dich_vu'));
 		if($type == 'add'){
 			$dichvu_id = intval($param);
 			if($dichvu_id > 0)
 				$dichvu = Table::Fetch('dich_vu',$dichvu_id);
-			//$loaidichvu = $this -> newModel -> getLoaiDichVu();
-			//$loaidichvu = array_combine(Utility::GetColumn($loaidichvu,'id'), Utility::GetColumn($loaidichvu,'ten_dich_vu'));
 			include(DIR_VIEW_ENTERPRISE.'/admin/dichvu/add.html');
 		}
 		else if($type == 'loaidichvu'){
-			$dichvu = $this -> newModel -> getLoaiDichVu();
+			if($_POST){
+				$loaidichvu = $_POST;
+				$loaidichvu['id'] = intval($_POST['loaidichvu_id']);
+				$insert = array('ten_dich_vu');
+				$table = new Table('loai_dich_vu',$loaidichvu);
+				if($loaidichvu['id'] > 0){
+					$table -> update($insert);
+					$_SESSION['notify'] = "Sửa Thành Công";
+					$_SESSION['notify_color'] = "yellow";
+				}
+				else{
+					$table -> insert($insert);
+					$_SESSION['notify'] = "Thêm  Thành Công";
+					$_SESSION['notify_color'] = "blue";
+				}
+			}
+			$loaidichvu = $this -> newModel -> getLoaiDichVu();
 			include(DIR_VIEW_ENTERPRISE.'/admin/dichvu/loaidichvu.html');
 		}
 		else{
+			$_SESSION['path'] = 'tour';
 			if($_POST){
 				$dichvu = $_POST;
 				$dichvu['id'] = intval($_POST['dichvu_id']);
@@ -86,22 +101,10 @@ class Admin_Controller extends HKL_Controller{
 				}
 			}
 			$dichvu = $this -> newModel -> getDichVu();
-			//$loaidichvu = $this -> newModel -> getLoaiDichVu();
-			//$loaidichvu = array_combine(Utility::GetColumn($loaidichvu,'id'), Utility::GetColumn($loaidichvu,'ten_dich_vu'));
 			include(DIR_VIEW_ENTERPRISE.'/admin/dichvu/dichvu.html');
 		}
 	}
 	
-	public function gioithieu()
-	{
-		parent::__construct();
-		$this->model->Model('Gioithieu_gioithieuModel');
-		$this->newModel = new Gioithieu_Model();
-		$gioithieu = $this -> newModel -> getGioiThieu();
-		//$loaidichvu = $this -> newModel -> getLoaiDichVu();		
-		//$loaidichvu = array_combine(Utility::GetColumn($loaidichvu,'id'), Utility::GetColumn($loaidichvu,'ten_dich_vu'));
-		include(DIR_VIEW_ENTERPRISE.'/admin/gioithieu/gioithieu.html');
-	}
 	
 	public function donhang($type)
 	{
@@ -194,8 +197,8 @@ class Admin_Controller extends HKL_Controller{
 			include(DIR_VIEW_ENTERPRISE.'/admin/tour/vemaybay.html');
 		}
 		if($type == ''){
-			unset($_SESSION['notify']);
-			unset($_SESSION['notify_color']);
+			//unset($_SESSION['notify']);
+			//unset($_SESSION['notify_color']);
 			$filename='tour';
 			$_SESSION['path'] = 'tour';
 		if($_POST){
@@ -222,7 +225,7 @@ class Admin_Controller extends HKL_Controller{
 				$gia_tour = $_POST['gia_tour'];
 				$gia_tour = str_replace('.', '', $gia_tour);
 				$tour['gia_tour'] = intval($gia_tour);
-				$tour['hinh'] = upload_image_dir('hinh',$tour['hinh'], 'tour');
+				$tour['hinh'] = upload_image_dir('hinh',$tour_arr['hinh'], 'tour');
 				$tour['date_create'] = time();
 				$insert = array('id_loai_tour','title','slogon_tour','intro','content','so_ngay','ngay_di','ngay_ve','gio_di','gio_den','id_diem_khoi_hanh','id_diem_den','gia_tour','id_phuong_tien','ma_so_phuong_tien','hinh','max_so_nguoi','min_so_nguoi','date_create');
 				$table = new Table('tour', $tour);			
@@ -255,8 +258,8 @@ class Admin_Controller extends HKL_Controller{
 		parent::__construct();
 		$this->model->Model('Thongtin_thongtinModel');
 		$this->newModel = new Thongtin_Model();
-		unset($_SESSION['notify']);
-		unset($_SESSION['notify_color']);
+		//unset($_SESSION['notify']);
+		//unset($_SESSION['notify_color']);
 		if($type == 'lienhe'){
 			
 		}
@@ -274,5 +277,211 @@ class Admin_Controller extends HKL_Controller{
 			include(DIR_VIEW_ENTERPRISE.'/admin/thongtin/gioithieu.html');
 		}
 	}
+	
+	public function duhoc($type,$param,$param1){
+		parent::__construct();
+		$this->model->Model('Duhoc_duhocModel');
+		$this->newModel = new Duhoc_Model();
+		if($type == 'my'){
+			if($param == 'faq'){
+				if($_POST){
+					$faq = $_POST;
+					$faq['id'] = intval($_POST['faq_id']);
+					$faq['id_du_hoc'] = 8;
+					$insert = array('description','content','id_du_hoc');
+					$table = new Table('du_hoc_detail',$faq);
+					if($faq['id'] > 0){
+						$table -> update($insert);
+						$_SESSION['notify'] = "Sửa Thành Công";
+						$_SESSION['notify_color'] = "yellow";
+					}
+					else{
+						$table -> insert($insert);
+						$_SESSION['notify'] = "Thêm  Thành Công";
+						$_SESSION['notify_color'] = "blue";
+					}
+				}
+				$faq = $this -> newModel -> getMyFAQ();
+				include(DIR_VIEW_ENTERPRISE.'/admin/duhoc/duhoc_my_faq.html');
+			}
+			if($param == 'lienket'){
+					if($_POST){
+						$faq = $_POST;
+						$faq['id'] = intval($_POST['faq_id']);
+						if($faq['id'] > 0)
+							$faq_arr = Table::Fetch('du_hoc_detail',$faq['id']);
+						$faq['id_du_hoc'] = 6;
+						$faq['hinh'] = upload_image_dir('hinh',$faq_arr['hinh'], 'duhoc');
+						$insert = array('description','content','id_du_hoc','hinh');
+						$table = new Table('du_hoc_detail',$faq);
+						if($faq['id'] > 0){
+							$table -> update($insert);
+							$_SESSION['notify'] = "Sửa Thành Công";
+							$_SESSION['notify_color'] = "yellow";
+						}
+						else{
+							$table -> insert($insert);
+							$_SESSION['notify'] = "Thêm  Thành Công";
+							$_SESSION['notify_color'] = "blue";
+						}
+					}
+					$faq = $this -> newModel -> getMyLink();
+					include(DIR_VIEW_ENTERPRISE.'/admin/duhoc/link.html');
+				}
+			if($param == 'baiviet'){
+				if($_POST){
+					$baiviet = $_POST;
+					$baiviet['id'] = 1;
+					$insert = array('description','content');
+					$table = new Table('du_hoc_detail',$baiviet);
+					$table -> update($insert);
+					$_SESSION['notify'] = "Sửa Thành Công";
+					$_SESSION['notify_color'] = "yellow";
+				}
+				$baiviet = $this -> newModel -> getMyBaiViet();
+				include(DIR_VIEW_ENTERPRISE.'/admin/duhoc/baiviet.html');
+			}
+			//$duhoc = $this -> newModel -> getDuhocMy();
+			//include(DIR_VIEW_ENTERPRISE.'/admin/duhoc/duhoc_my.html');
+		}
+		if($type == 'quocte'){
+			if($param == 'faq'){
+				if($_POST){
+					$faq = $_POST;
+					$faq['id'] = intval($_POST['faq_id']);
+					$faq['id_du_hoc'] = 9;
+					$insert = array('description','content','id_du_hoc');
+					$table = new Table('du_hoc_detail',$faq);
+					if($faq['id'] > 0){
+						$table -> update($insert);
+						$_SESSION['notify'] = "Sửa Thành Công";
+						$_SESSION['notify_color'] = "yellow";
+					}
+					else{
+						$table -> insert($insert);
+						$_SESSION['notify'] = "Thêm  Thành Công";
+						$_SESSION['notify_color'] = "blue";
+					}
+				}
+				$faq = $this -> newModel -> getQuocTeFAQ();
+				include(DIR_VIEW_ENTERPRISE.'/admin/duhoc/duhoc_my_faq.html');
+			}
+			if($param == 'lienket'){
+					if($_POST){
+						$faq = $_POST;
+						$faq['id'] = intval($_POST['faq_id']);
+						if($faq['id'] > 0)
+							$faq_arr = Table::Fetch('du_hoc_detail',$faq['id']);
+						$faq['id_du_hoc'] = 7;
+						$faq['hinh'] = upload_image_dir('hinh',$faq_arr['hinh'], 'duhoc');
+						$insert = array('description','content','id_du_hoc','hinh');
+						$table = new Table('du_hoc_detail',$faq);
+						if($faq['id'] > 0){
+							$table -> update($insert);
+							$_SESSION['notify'] = "Sửa Thành Công";
+							$_SESSION['notify_color'] = "yellow";
+						}
+						else{
+							$table -> insert($insert);
+							$_SESSION['notify'] = "Thêm  Thành Công";
+							$_SESSION['notify_color'] = "blue";
+						}
+					}
+					$faq = $this -> newModel -> getQuocTeLink();
+					include(DIR_VIEW_ENTERPRISE.'/admin/duhoc/link.html');
+				}
+		if($param == 'baiviet'){
+				if($_POST){
+					$baiviet = $_POST;
+					$baiviet['id'] = 2;
+					$insert = array('description','content');
+					$table = new Table('du_hoc_detail',$baiviet);
+					$table -> update($insert);
+					$_SESSION['notify'] = "Sửa Thành Công";
+					$_SESSION['notify_color'] = "yellow";
+				}
+				$baiviet = $this -> newModel -> getQuocTeBaiViet();
+				include(DIR_VIEW_ENTERPRISE.'/admin/duhoc/baiviet.html');
+			}
+			//$duhoc = $this -> newModel -> getDuhocMy();
+			//include(DIR_VIEW_ENTERPRISE.'/admin/duhoc/duhoc_my.html');
+		}
+		if($type == 'news'){
+			if($param == 'add'){
+					$news_id = intval($param1);
+					if($news_id > 0)
+						$news = Table::Fetch('du_hoc_detail',$news_id);
+					include(DIR_VIEW_ENTERPRISE.'/admin/duhoc/add_news.html');
+			}
+			else{
+				if($_POST){
+					$news = $_POST;
+					$news['id'] = intval($_POST['news_id']);
+					$news['id_du_hoc'] = 5;
+					$insert = array('description','content','id_du_hoc');
+					$table = new Table('du_hoc_detail',$news);
+					if($news['id'] > 0){
+						$table -> update($insert);
+							$_SESSION['notify'] = "Sửa Thành Công";
+							$_SESSION['notify_color'] = "yellow";
+					}
+					else{
+						$table -> insert($insert);
+							$_SESSION['notify'] = "Thêm  Thành Công";
+							$_SESSION['notify_color'] = "blue";
+					}
+				}
+				$news = $this -> newModel -> getNews();
+				include(DIR_VIEW_ENTERPRISE.'/admin/duhoc/news.html');
+			}
+		}
+		if($type == 'visa'){
+			if($param == 'add'){
+					$news_id = intval($param1);
+					if($news_id > 0)
+						$news = Table::Fetch('du_hoc_detail',$news_id);
+					include(DIR_VIEW_ENTERPRISE.'/admin/duhoc/add_visa.html');
+			}
+			else{
+				if($_POST){
+					$news = $_POST;
+					$news['id'] = intval($_POST['news_id']);
+					$news['id_du_hoc'] = 4;
+					$insert = array('description','content','id_du_hoc');
+					$table = new Table('du_hoc_detail',$news);
+					if($news['id'] > 0){
+						$table -> update($insert);
+							$_SESSION['notify'] = "Sửa Thành Công";
+							$_SESSION['notify_color'] = "yellow";
+					}
+					else{
+						$table -> insert($insert);
+							$_SESSION['notify'] = "Thêm  Thành Công";
+							$_SESSION['notify_color'] = "blue";
+					}
+				}
+				$visa = $this -> newModel -> getVisa();
+				include(DIR_VIEW_ENTERPRISE.'/admin/duhoc/visa.html');
+			}
+		}
+		if($type == 'gioithieu'){
+				if($_POST){
+					$baiviet = $_POST;
+					$baiviet['id'] = 3;
+					$insert = array('content');
+					$table = new Table('du_hoc_detail',$baiviet);
+					$table -> update($insert);
+					$_SESSION['notify'] = "Sửa Thành Công";
+					$_SESSION['notify_color'] = "yellow";
+				}
+				$gioithieu = $this -> newModel -> getGioiThieu();
+				include(DIR_VIEW_ENTERPRISE.'/admin/duhoc/gioithieu.html');
+			}
+			//$duhoc = $this -> newModel -> getDuhocMy();
+			//include(DIR_VIEW_ENTERPRISE.'/admin/duhoc/duhoc_my.html');
+		}
+		//$duhoc = $this -> newModel -> getDuhoc();
+		//include(DIR_VIEW_ENTERPRISE.'/admin/duhoc/duhoc.html');
+	
 }
 ?>

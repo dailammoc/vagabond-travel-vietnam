@@ -1,0 +1,86 @@
+<?php $this->load->view("admin/header/header.html")?>
+<script src="<?php echo DIR_JS_ENTERPRISE ?>ckeditor/ckeditor.js" type="text/javascript"></script>
+<script>
+var domain = "<?php echo URL_HOME?>";
+$(document).ready(function(){
+	
+	CKEDITOR.replace( 'content_gioithieu',{
+		skin : 'v2',
+		toolbar : [
+					[ 'Bold', 'Italic','Underline',
+					  	'-','Link','Image',
+						'-','NumberedList','BulletedList',
+						'-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock',
+						'-','Font','FontSize','TextColor','BGColor' ],					
+				],
+		width:'1200',
+		height:'300',
+		filebrowserBrowseUrl :domain +'/scripts/ckeditor/filemanager/browser/default/browser.html?Connector=' + domain + '/scripts/ckeditor/filemanager/connectors/php/connector.php',
+        filebrowserImageBrowseUrl : domain +'/scripts/ckeditor/filemanager/browser/default/browser.html?Type=Image&Connector=' + domain + '/scripts/ckeditor/filemanager/connectors/php/connector.php',
+        filebrowserFlashBrowseUrl :domain +'/scripts/ckeditor/filemanager/browser/default/browser.html?Type=Flash&Connector=' + domain + '/scripts/ckeditor/filemanager/connectors/php/connector.php',
+    	filebrowserUploadUrl  :domain +'/scripts/ckeditor/filemanager/connectors/php/upload.php?Type=File',
+		filebrowserImageUploadUrl : domain +'/scripts/ckeditor/filemanager/connectors/php/upload.php?Type=Image',
+		filebrowserFlashUploadUrl : domain +'/scripts/ckeditor/filemanager/connectors/php/upload.php?Type=Flash'
+	});
+});
+</script>
+<!--  start page-heading -->
+	<div id="page-heading">
+		<h1></h1>
+	</div>
+	<!-- end page-heading -->
+	<form action="" method="POST">
+	<table border="0" width="100%" cellpadding="0" cellspacing="0" id="content-table">
+	<tr>
+		<th rowspan="3" class="sized"><img src="images/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
+		<th></th>
+		<td>&nbsp;</td>
+		<th></th>
+		<th rowspan="3" class="sized"><img src="images/shared/side_shadowright.jpg" width="20" height="300" alt="" /></th>
+	</tr>
+	<tr>
+		<td></td>
+		<td>
+		<!--  start content-table-inner ...................................................................... START -->
+		<div id="content-table-inner">
+		
+			<!--  start table-content  -->
+			<div id="table-content">
+			<?php if(isset($_SESSION['notify'])){?>
+				<!--  start message-yellow -->
+				<div id="message-<?php echo $_SESSION['notify_color']?>">
+				<table border="0" width="100%" cellpadding="0" cellspacing="0">
+				<tr>
+					<td class="<?php echo $_SESSION['notify_color']?>-left"><?php echo $_SESSION['notify']?></td>
+					<td class="<?php echo $_SESSION['notify_color']?>-right"><a class="close-<?php echo $_SESSION['notify_color']?>"><img src="<?php echo DIR_IMG_ENTERPRISE ?>table/icon_close_<?php echo $_SESSION['notify_color']?>.gif"   alt="" /></a></td>
+				</tr>
+				</table>
+				</div>
+				<?php }?>
+				
+				<textarea id="content_gioithieu" name="content"><?php echo $gioithieu['content']?></textarea>
+			</div>
+			<!--  end table-content  -->
+	
+			<div class="clear"></div>
+		 
+		</div>
+		<!--  end content-table-inner ............................................END  -->
+		</td>
+		<td></td>
+	</tr>
+	<tr>
+		<th class="sized bottomleft"></th>
+		<td>&nbsp;</td>
+		<th class="sized bottomright"></th>
+	</tr>
+	<tr>
+		<th ></th>
+		<td ></td>
+		<td valign="top">
+			<input style="float:right"class="form-submit" type="submit" value="123">
+		</td>
+	</tr>
+	</table>
+</form>
+<?php $this->load->view ("admin/footer/footer.html")?>

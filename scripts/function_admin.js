@@ -24,6 +24,22 @@ function add_diem(loai,loai_diem_id){
 	$('.basic-modal-content').modal({minWidth: 700,minHeight:500,overlayClose:true});
 	$('.basic-modal-content').load(URL_HOME_ENTERPRISE + '/Views/admin/tour/add_diem.php?loai='+loai+'&loai_diem_id='+loai_diem_id);
 }
+function add_loai_dichvu(loaidichvu_id){
+	$('.basic-modal-content').modal({minWidth: 400,minHeight:100,overlayClose:true});
+	$('.basic-modal-content').load(URL_HOME_ENTERPRISE + '/Views/admin/dichvu/add_loai_dichvu.php?loaidichvu_id='+loaidichvu_id);
+}
+function add_faq(faq_id){
+	$('.basic-modal-content').modal({minWidth: 500,minHeight:430,overlayClose:true});
+	$('.basic-modal-content').load(URL_HOME_ENTERPRISE + '/Views/admin/duhoc/add_faq.php?faq_id='+faq_id);
+}
+function add_link(faq_id){
+	$('.basic-modal-content').modal({minWidth: 500,minHeight:230,overlayClose:true});
+	$('.basic-modal-content').load(URL_HOME_ENTERPRISE + '/Views/admin/duhoc/add_link.php?faq_id='+faq_id);
+}
+function add_news(faq_id){
+	$('.basic-modal-content').modal({minWidth: 500,minHeight:230,overlayClose:true});
+	$('.basic-modal-content').load(URL_HOME_ENTERPRISE + '/Views/admin/duhoc/add_news.php?faq_id='+faq_id);
+}
 function detail_tour(tour_id){
 	$('.basic-modal-content').modal({minWidth: 700,minHeight:500,overlayClose:true});
 	$('.basic-modal-content').load(URL_HOME_ENTERPRISE + '/Views/admin/tour/tour_detail.php?tour_id='+tour_id);
