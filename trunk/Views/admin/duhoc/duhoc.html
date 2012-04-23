@@ -16,12 +16,7 @@ $(function(){
 });
 </script> 
 <!--  start page-heading -->
-	<a href="<?php echo URL_HOME?>/admin/dichvu/add"><div class="buttons" style="margin-left:43px">
-			<button class="positive" name="save" type="submit">
-			<img alt="" src="<?php echo DIR_IMG_ENTERPRISE ?>add.jpg">
-			Add
-			</button>
-		</div></a>
+	
 	<!-- end page-heading -->
 
 	<table border="0" width="100%" cellpadding="0" cellspacing="0" id="content-table">
@@ -59,7 +54,8 @@ $(function(){
 				<table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
 				<tr>
 					<th class="table-header-check"><a id="toggle-all" ></a> </th>
-					<th class="table-header-repeat line-left minwidth-1"><a href="">Tên Dịch Vụ</a>	</th>
+					<th class="table-header-repeat line-left"><a href="">STT</a>	</th>
+					<th class="table-header-repeat line-left minwidth-1"><a href="">Loại</a>	</th>
 					<th class="table-header-repeat line-left minwidth-1"><a href="">Loại Dịch Vụ</a></th>
 					<th class="table-header-repeat line-left"><a href="">Giới Thiệu</a></th>
 					<th class="table-header-repeat line-left"><a href="">Nội Dung</a></th>
@@ -67,9 +63,10 @@ $(function(){
 					<th class="table-header-repeat line-left"><a href="">Option</a></th>
 					<th class="table-header-check" style="color:white">Hide<a id="hide-all"></a></th>					
 				</tr>
-				<?php $i = 0;if(count($dichvu) > 0)foreach($dichvu as $index => $one) { $i ++;?>
+				<?php $i = 0;if(count($duhoc) > 0)foreach($duhoc as $index => $one) { $i ++;?>
 					<tr class="<?php echo ($i %2 == 0) ? 'alternate-row' : '' ?>">
 					<td><input  class="cb_select"type="checkbox"/></td>
+					<td><?php echo $i?></td>
 					<td><?php echo $one['title']?></td>
 					<td><?php echo $loaidichvu[$one['id_loai_dv']]?></td>
 					<td><?php echo mb_substr($one['description'],0,50,'UTF-8'); ?></td>

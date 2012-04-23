@@ -37,6 +37,9 @@ class HKL_Controller {
 	public function __construct()
 	{
 		$_SESSION['sdt_travel_viendang'] = "08.3838.6969";
+		unset($_SESSION['notify']);
+		unset($_SESSION['notify_color']);
+		unset($_SESSION['path']);
 		self::$instance =& $this;
 		foreach (is_loaded() as $var => $class)
 		{

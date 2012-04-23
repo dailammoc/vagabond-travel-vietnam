@@ -1,7 +1,9 @@
 <?php
 class Dichvu_Model{
 	public function getLoaiDichVu(){
-		$loaidichvu  = DB::LimitQuery('loai_dich_vu');
+		$loaidichvu  = DB::LimitQuery('loai_dich_vu',array(
+			'order' => 'ORDER BY id DESC'
+		));
 		return $loaidichvu;
 	}
 	
@@ -11,7 +13,9 @@ class Dichvu_Model{
 	}
 	
 	public function getDichVu(){
-		$dichvu  = DB::LimitQuery('dich_vu');
+		$dichvu  = DB::LimitQuery('dich_vu',array(
+			'order' => 'ORDER BY id DESC'
+		));
 		return $dichvu;
 	}
 	
