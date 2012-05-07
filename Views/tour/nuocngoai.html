@@ -1,5 +1,5 @@
 <?php $this->load->view("header/header.html")?>
-                
+<link rel="stylesheet" href="<?php echo DIR_CSS_ENTERPRISE ?>pagination.css" type="text/css" />                
                 <div class="content minHeight">
                 
                 	<h4 class="titleALl">TOUR nước ngoài</h4>
@@ -25,7 +25,7 @@
                               	<tr>                          
                                 <td class="titleT"><a style="color:black" href="chitiet/<?php echo $one['id'] ?>/nuocngoai"><?php echo $diemkhoihanh[$one['id_diem_khoi_hanh']].'-'. $diemden[$one['id_diem_den']]; ?></a></td>
                                 <td><?php echo $one['so_ngay']?></td>
-                                <td><?php echo $one['gia_tour']?></td>
+                                <td><?php echo number_format($one['gia_tour'],0,'','.')?></td>
                                 <td><?php echo date('d-m-Y',$one['ngay_di'])?></td>
                                 <td><?php echo date('d-m-Y',$one['ngay_ve'])?></td>
 <!--                                <td><?php echo $one['ma_so_phuong_tien']?></td>-->
@@ -42,7 +42,16 @@
 
                         </div>
                         
-                        <div class="pageNum alignR padT20"><a href="#" class="active">1</a>   <a href="#">2</a>   <a href="#">3</a>   <a href="#">4</a>.... <a href="#">7</a> <a href="#">>></a></div>
+                        <div class="pageNum alignR padT20">
+                    		<ul id="pagination-digg">
+                    		<?php for($i = 1; $i <= $countTour; $i ++){?>
+                    			<?php if($i == $page){?>
+                    			<li class="active"><?php echo $i?></li>
+                    			<?php }else{?>
+                    			<li><a href="?page=<?php echo $i?>"><?php echo $i?></a></li>
+                    			<?php }?>
+                    		<?php }?>
+</ul> </div>
                     
                     </div>	
                 

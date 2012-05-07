@@ -6,13 +6,7 @@ $(document).ready(function(){
 	
 	CKEDITOR.replace( 'content_gioithieu',{
 		skin : 'v2',
-		toolbar : [
-					[ 'Bold', 'Italic','Underline',
-					  	'-','Link','Image',
-						'-','NumberedList','BulletedList',
-						'-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock',
-						'-','Font','FontSize','TextColor','BGColor' ],					
-				],
+		
 		width:'1200',
 		height:'300',
 		filebrowserBrowseUrl :domain +'/scripts/ckeditor/filemanager/browser/default/browser.html?Connector=' + domain + '/scripts/ckeditor/filemanager/connectors/php/connector.php',

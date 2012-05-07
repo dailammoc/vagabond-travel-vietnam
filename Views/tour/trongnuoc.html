@@ -24,13 +24,13 @@
                               	<tr>                          
                                 <td class="titleT"><a style="color:black" href="chitiet/<?php echo $one['id'] ?>/trongnuoc"><?php echo $diemkhoihanh[$one['id_diem_khoi_hanh']].'-'. $diemden[$one['id_diem_den']]; ?></a></td>
                                 <td><?php echo $one['so_ngay']?></td>
-                                <td><?php echo $one['gia_tour']?></td>
+                                <td><?php echo number_format($one['gia_tour'],0,'','.')?></td>
                                 <td><?php echo date('d-m-Y',$one['ngay_di'])?></td>
                                 <td><?php echo date('d-m-Y',$one['ngay_ve'])?></td>
                                 <td><?php echo $one['ma_so_phuong_tien']?></td>
                                 <td><?php echo date('H:i',$one['gio_di'])?></td>
                                 <td><?php echo date('H:i',$one['gio_den'])?></td>
-                                <td>9<br /><a href="#" class="bntB2" style="color:white">ĐặtTour</a>
+                                <td>9<br /><a href="javascript:order_tour(<?php echo $one['id']?>)" class="bntB2" style="color:white">ĐặtTour</a>
                                 
                                 </td>
                               </tr>
@@ -42,7 +42,7 @@
                        
                     	<div class="pageNum alignR padT20">
                     		<ul id="pagination-digg">
-                    		<?php for($i = 1; $i < $countTour; $i ++){?>
+                    		<?php for($i = 1; $i <= $countTour; $i ++){?>
                     			<?php if($i == $page){?>
                     			<li class="active"><?php echo $i?></li>
                     			<?php }else{?>

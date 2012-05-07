@@ -267,8 +267,10 @@ class Admin_Controller extends HKL_Controller{
 			if($_POST){
 				$gioithieu = $_POST;
 				$insert = array('content');
-				$gioithieu['id'] = 1;
-				$table = new Table('gioi_thieu',$gioithieu);
+				//$gioithieu['id'] = 1;
+				$gioithieu['id'] = 13;
+				//$table = new Table('gioi_thieu',$gioithieu);
+				$table = new Table('du_hoc_detail',$gioithieu);
 				$table -> update($insert);
 				$_SESSION['notify'] = "Sửa Thành Công";
 				$_SESSION['notify_color'] = "yellow";

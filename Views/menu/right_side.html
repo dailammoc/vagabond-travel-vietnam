@@ -27,14 +27,14 @@
                         	<select name="" class="selS" id="search_diemkhoihanh">
                         		<option value="0">Tất Cả</option>                       		
                         		<?php foreach($diemkhoihanh as $index => $one){?>
-                        			<option value="<?php $one['id']?>"><?php echo $one['ten_dia_diem']?></option>
+                        			<option value="<?php echo $one['id']?>"><?php echo $one['ten_dia_diem']?></option>
                         		<?php } ?>
                         	</select><br>
                             <label>Điểm đến</label> 
                             <select name="" class="selS" id="search_diemden">
                             	<option value="0">Tất Cả</option> 
                             	<?php foreach($diemden as $index => $one){?>
-                        			<option value="<?php $one['id']?>"><?php echo $one['ten_dia_diem']?></option>
+                        			<option value="<?php echo $one['id']?>"><?php echo $one['ten_dia_diem']?></option>
                         		<?php } ?>
                             </select><br>
                             <div class="alignR"><input type="button" class="bntSR" value="Search" id="search_tour_submit"/></div>

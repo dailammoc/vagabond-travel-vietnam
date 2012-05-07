@@ -10,7 +10,20 @@ class Tour_Model{
 		$count = Table::Count('tour',array(
 			'id_loai_tour' => $id
 		));
-		return $count + 1;
+		return $count;
+	}
+	public function countTourBySearchTitle($title){
+		$count = Table::Count('tour',array("title LIKE '%".$title."%'"));
+		return $count;
+	}
+	public function countTourBySearch($diemkhoihanh,$diemden){
+		$condition = array();
+		if($diemkhoihanh != 0)
+			$condition[] = array('id_diem_khoi_hanh'=>$diemkhoihanh);
+		if($diemden != 0)
+			 $condition[] = array('id_diem_den'=>$diemden);
+		$count = Table::Count('tour',$condition);
+		return $count;
 	}
 	public function getLoaiTour(){
 		$loaitour = DB::LimitQuery('loai_tour');
@@ -57,13 +70,27 @@ class Tour_Model{
 		$diemkhoihanh = Table::Fetch('loai_diem_den',$id);
 		return $diemkhoihanh;
 	}
-	public function search($diemkhoihanh,$diemden){
+	public function search($diemkhoihanh,$diemden,$offset,$pagesize){
 		$condition = array();
 		if($diemkhoihanh != 0)
 			$condition[] = array('id_diem_khoi_hanh'=>$diemkhoihanh);
 		if($diemden != 0)
 			 $condition[] = array('id_diem_den'=>$diemden);
-		$result = DB::LimitQuery('tour',array('condition'=>$condition));
+		$result = DB::LimitQuery('tour',array(
+			'condition'=>$condition,
+			'order' => 'ORDER BY id DESC',
+			'size' => $pagesize,
+			'offset' => $offset,
+		));
+		return $result;
+	}
+	public function searchTitle($title,$offset,$pagesize){
+		$result = DB::LimitQuery('tour',array(
+			'condition'=>array("title LIKE '%".$title."%'"),
+			'order' => 'ORDER BY id DESC',
+			'size' => $pagesize,
+			'offset' => $offset,
+		));
 		return $result;
 	}
 	public function getNhatKy(){

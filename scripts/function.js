@@ -31,6 +31,8 @@ $(document).ready(function(){
 			alert("Bạn Chưa Nhập Họ Tên");
 		else if($('#email').val() == '')
 			alert("Bạn Chưa Nhập Email");
+		else if(validate($('#email').val()) == false)
+			return false;
 		else if($('#noidung').val() == '')
 			alert("Bạn Chưa Nhập Nội Dung");
 		else{
@@ -50,28 +52,66 @@ $(document).ready(function(){
 			});
 		}
 	});
-	
+	////////duhoc_lien he
+	$('#duhoc_submit').click(function(){
+		if($('#hoten_duhoc').val() == '')
+			alert("Bạn Chưa Nhập Họ Tên");
+		else if($('#diachi_duhoc').val() == '')
+			alert("Bạn Chưa Nhập Địa Chỉ");
+		else if($('#email_duhoc').val() == '')
+			alert("Bạn Chưa Nhập Email");
+		else if(validate($('#email_duhoc').val()) == false)
+			return false;
+		else if($('#dienthoai_duhoc').val() == '')
+			alert("Bạn Chưa Nhập Số Điện Thoại");
+		else if($('#noidung_duhoc').val() == '')
+			alert("Bạn Chưa Nhập Nội Dung");
+		else{
+			$.ajax({
+				type:"POST",
+				url : DIR_AJAX_TRAVEL + "/actionAjax.php",
+				data:{
+					action : "lienhe_duhoc",
+					hoten : $('#hoten_duhoc').val(),
+					email : $('#email_duhoc').val(),
+					diachi : $('#diachi_duhoc').val(),
+					dienthoai : $('#dienthoai_duhoc').val(),
+					noidung : $('#noidung_duhoc').val(),
+					type : $('#type_duhoc').val()
+				},
+				success:function(respond){
+					if(respond == 1)
+						alert("Xin cảm ơn bạn");					
+				}		
+			});
+		}
+	});
 	////datvemaybay.html
 	$('#datvemaybay_submit').click(function(){
 		if($('#hoten').val() == '')
 			alert("Bạn Chưa Nhập Họ Tên");
 		else if($('#email').val() == '')
 			alert("Bạn Chưa Nhập Email");
+		else if(validate($('#email').val()) == false)
+			return false;
 		else if($('#dienthoai').val() == '')
 			alert("Bạn Chưa Nhập Điện Thoại");
 		else{
-			if($("#trongnuoc").attr('checked') == true)
+			if($("#trongnuoc").attr('checked') == true){
 				loaive = 'trongnuoc';
-			else
+				diemden_ = $("#diemden").val();
+			}
+			else{
 				loaive = 'quocte';
-			
+				diemden_ = $("#diemden_1").val();
+			}
 			if($("#motchieu").attr('checked') == true)
 				sochieu = 'motchieu';
 			else
 				sochieu = 'haichieu';
 			var name = confirm("Bạn có chắc chắn đặt vé");
 			if(name){
-				$.ajax({
+				$.ajax({ 
 					type:"POST",
 					url : DIR_AJAX_TRAVEL + "/actionAjax.php",
 					data:{
@@ -82,7 +122,7 @@ $(document).ready(function(){
 						loaidatve : loaive,
 						loaichieu : sochieu,
 						diemkhoihanh : $("#diemkhoihanh").val(),
-						diemden : $("#diemden").val(),
+						diemden : diemden_,
 						ngaydi :$("#ngaydi").val(),
 						ngayve : $("#ngayve").val(),
 						giodukien_di : $('#giodukien_di').val(),
@@ -105,30 +145,42 @@ $(document).ready(function(){
 		diemden = $('#search_diemden').val();
 		location.href=URL_HOME_ENTERPRISE+"/tour/search/"+diemkhoihanh+"/"+diemden;
 	})
+	$('#header_search_submit').click(function(){
+		title = $('#header_search_text').val();
+		location.href=URL_HOME_ENTERPRISE+"/tour/searchTitle/"+title;
+	})
 	/////email khuyen mai
 	$('#email_km_submit').click(function(){
-		$.ajax({
-			type:"POST",
-			url : DIR_AJAX_TRAVEL + "/actionAjax.php",
-			data:{
-				action : "khuyenmai",				
-				email : $('#email_km').val(),
-			},
-			success:function(respond){
-				if(respond == 1)
-					alert("Xin cảm ơn bạn");					
-			}		
-		});
+		if(validate($('#email_km').val()) == false)
+			return false;
+		else{
+			$.ajax({
+				type:"POST",
+				url : DIR_AJAX_TRAVEL + "/actionAjax.php",
+				data:{
+					action : "khuyenmai",				
+					email : $('#email_km').val(),
+				},
+				success:function(respond){
+					if(respond == 1)
+						alert("Xin cảm ơn bạn");					
+				}		
+			});
+		}
 	});
 	
 	////dat tour
 	$('#order_tour_submit').click(function(){
 		if($('#hoten_order').val() == '')
 			alert("Bạn Chưa Nhập Họ Tên");
+		else if(validate($('#email_order').val()) == false)
+			return false;
 		else if($('#email_order').val() == '')
 			alert("Bạn Chưa Nhập Email");
 		else if($('#dienthoai_order').val() == '')
 			alert("Bạn Chưa Nhập Điện Thoại");
+		else if($('#diachi_order').val() == '')
+			alert("Bạn Chưa Nhập Địa Chỉ");
 		else{
 			var name = confirm("Bạn có chắc chắn đặt vé");
 			if(name){
@@ -140,7 +192,8 @@ $(document).ready(function(){
 						hoten : $('#hoten_order').val(),
 						email : $('#email_order').val(),
 						dienthoai : $('#dienthoai_order').val(),
-						tour_id : $('#tour_id_hidden').val(),
+						diachi : $('#diachi_order').val(),
+						tour_id : $('#tour_id_hidden').val()
 					},
 					success:function(respond){
 						if(respond == 1)
@@ -203,3 +256,12 @@ function duhoc(type){
 	$('.basic-modal-content').modal({minWidth: 870,overlayClose:true});
 	$('.basic-modal-content').load(URL_HOME_ENTERPRISE + '/Views/duhoc/info.php?type='+type);
 }
+function validate(email) {
+	var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+	var address = email;
+	if (reg.test(address) == false) {
+	alert('Email không hợp lệ');
+	return false;
+	} else
+	return true;
+} 
