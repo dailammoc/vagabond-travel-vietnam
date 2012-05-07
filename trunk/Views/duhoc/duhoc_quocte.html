@@ -1,0 +1,52 @@
+<?php $this->load->view("header/header.html")?>
+<script src="<?php echo DIR_JS_ENTERPRISE ?>jquery.meio.mask.js" type="text/javascript"></script>
+<script>
+	$(document).ready(function(){
+		$('#dienthoai_duhoc').setMask({
+			mask:'999999999999',
+			type : 'reverse'
+		})
+	});
+</script>  	
+                
+                <div class=" minHeight blogStudy">
+                
+               	  	<div><img src="<?php echo DIR_IMG_ENTERPRISE ?>bg/topDH.jpg" /></div>
+                    <?php echo $duhoc_my['content']?>
+                    <br/>
+                    <div class="padT25 fixed">
+                    	<span class="fl"><a href="<?php echo URL_HOME.'/duhoc/quocte/link'?>/duhoc"><img src="<?php echo DIR_IMG_ENTERPRISE ?>bg/lk.png"  /></a></span>
+                        <span><a href="<?php echo URL_HOME.'/duhoc/quocte/faq'?>/duhoc"><img src="<?php echo DIR_IMG_ENTERPRISE ?>bg/ch.png"  /></a></span>
+                    </div>
+                    
+                    <div class="bgP">Đừng ngần ngại, hãy điền thông tin vào đây, chúng tôi sẽ liên lạc với bạn ngay</div>
+                     <input type="hidden" id="type_duhoc" value="2">
+                    <div class="fromContact">
+                    	<div class="col1">
+                        	<label>Họ & Tên:</label> <input type="text" class="inpC1" id="hoten_duhoc"/><br />
+                            <label>Địa chỉ Email:</label> <input type="text" class="inpC1" id="email_duhoc"/><br />
+                        </div>
+                        <div class="col2">
+                        	<label>Địa chỉ:</label> <input type="text" class="inpC2" id="diachi_duhoc"/><br />
+                            <label>Điện thoại:</label> <input type="text" class="inpC2" id="dienthoai_duhoc"/><br />
+                        </div>
+                        <div class="clr"></div>
+                        <label>Nội Dung:</label>
+                        <textarea class="areaC2" id="noidung_duhoc"></textarea><br />
+                        <input type="submit" class="bntC" value="Gửi" id="duhoc_submit"/>
+                    </div>
+                    
+                    <div class="padT20"></div>
+                    				
+              	</div>    
+            
+			</div>
+            <!-- en main left -->
+            
+            <!-- main right -->
+            <?php $this->load->view("menu/right_side.html")?>
+                
+	<!-- en bodymain -->
+    
+    <!-- footer -->
+	<?php $this->load->view ("footer/footer.html")?>

@@ -9,21 +9,23 @@
                     <div class="blogDiary">
                     	<ul>
                     		<?php foreach($nhatky as $index => $one){?>
+                    		<?php if($nhatky_image[$one['id']]){?>
                     			<li>
                             		<div class="picDia"><a href="#"><img src="<?php echo DIR_IMG_ENTERPRISE.$nhatky_image[$one['id']]?>"  /></a></div>
                                 	<div class="txtDia"><?php echo $nhatky_loibinh[$one['id']] ?></div>
                             	</li>
+                            <?php }?>  
                     		<?php }?>                        
                         </ul>
                         
                     </div>
                     <div class="clr padT10"></div>
-                    <ul class="listTourOther">
-                            <li><a href="#">Aenean. Sed laoreet. Aenean pede. Phasellus porta</a></li>
-                            <li><a href="#">Fusce elit ligula,  Aenean. Sed laoreet. Aenean pede.</a></li>
-                            <li><a href="#">Aenean. Sed laoreet. Aenean pede. Phasellus porta</a></li>
-                            <li><a href="#">Fusce elit ligula,  Aenean. Sed laoreet. Aenean pede.</a></li>
-                    </ul>
+<!--                    <ul class="listTourOther">-->
+<!--                            <li><a href="#">Aenean. Sed laoreet. Aenean pede. Phasellus porta</a></li>-->
+<!--                            <li><a href="#">Fusce elit ligula,  Aenean. Sed laoreet. Aenean pede.</a></li>-->
+<!--                            <li><a href="#">Aenean. Sed laoreet. Aenean pede. Phasellus porta</a></li>-->
+<!--                            <li><a href="#">Fusce elit ligula,  Aenean. Sed laoreet. Aenean pede.</a></li>-->
+<!--                    </ul>-->
                     
                     
                 </div>

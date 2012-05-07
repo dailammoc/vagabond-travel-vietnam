@@ -16,25 +16,36 @@ class Duhoc_Model{
 		));
 		return $duhoc;
 	}
-	public function getMyFAQ(){
+	
+	public function getDuhocQuocTe(){
 		$duhoc = DB::LimitQuery('du_hoc_detail',array(
-			'condition' => array('id_du_hoc' => 8),
-			'order' => 'ORDER BY id DESC'
+			'condition' => array('id_du_hoc' => 2),
+			'one' => true
 		));
+		return $duhoc;
+	}
+	public function getMyFAQ(){
+//		$duhoc = DB::LimitQuery('du_hoc_detail',array(
+//			'condition' => array('id_du_hoc' => 8),
+//			'order' => 'ORDER BY id DESC'
+//		));
+		$duhoc = Table::Fetch('du_hoc_detail',7);
 		return $duhoc;
 	}
 	public function getMyLink(){
-		$duhoc = DB::LimitQuery('du_hoc_detail',array(
-			'condition' => array('id_du_hoc' => 6),
-			'order' => 'ORDER BY id DESC'
-		));
+//		$duhoc = DB::LimitQuery('du_hoc_detail',array(
+//			'condition' => array('id_du_hoc' => 6),
+//			'order' => 'ORDER BY id DESC'
+//		));
+		$duhoc = Table::Fetch('du_hoc_detail',6);
 		return $duhoc;
 	}
 	public function getQuocTeFAQ(){
-		$duhoc = DB::LimitQuery('du_hoc_detail',array(
-			'condition' => array('id_du_hoc' => 9),
-			'order' => 'ORDER BY id DESC'
-		));
+//		$duhoc = DB::LimitQuery('du_hoc_detail',array(
+//			'condition' => array('id_du_hoc' => 9),
+//			'order' => 'ORDER BY id DESC'
+//		));
+		$duhoc = Table::Fetch('du_hoc_detail',8);
 		return $duhoc;
 	}
 	public function getQuocTeLink(){
@@ -42,6 +53,10 @@ class Duhoc_Model{
 			'condition' => array('id_du_hoc' => 7),
 			'order' => 'ORDER BY id DESC'
 		));
+		return $duhoc;
+	}
+	public function getQuocTeLinkChiTiet($id){
+		$duhoc = Table::Fetch('du_hoc_detail',$id);
 		return $duhoc;
 	}
 	public function getLinkTaiLieu(){
@@ -66,12 +81,21 @@ class Duhoc_Model{
 			));
 		return $visa;
 	}
+	public function getVisaById($id){
+		$visa = Table::Fetch('du_hoc_detail',$id);
+		return $visa;
+	}
 	public function getNews(){
 		$news = db::LimitQuery('du_hoc_detail',array(
 				'condition' => array('id_du_hoc' => 5),
 				//'one' => true
 				'order' => 'ORDER BY id DESC'
 			));
+		return $news;
+	}
+	
+	public function getNewsById($id){
+		$news = Table::Fetch('du_hoc_detail',$id);
 		return $news;
 	}
 	

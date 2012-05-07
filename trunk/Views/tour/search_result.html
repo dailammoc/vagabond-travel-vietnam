@@ -1,11 +1,11 @@
 <?php $this->load->view("header/header.html")?>
-                
+<link rel="stylesheet" href="<?php echo DIR_CSS_ENTERPRISE ?>pagination.css" type="text/css" />                   
                 <div class="content minHeight">
                 
                 	<h4 class="titleALl">Kết quả Tìm kiếm</h4>
                     
                     <div class="pageDetail ">
-                    
+						<?php if(count($tour) > 0){?>                    
                     	<div class="blogTourTab">
                         	<table width="100%" border="1" cellpadding="3">
                               <tr class="rowTop">
@@ -14,7 +14,7 @@
                                 <td>Giá (VNĐ)</td>
                                 <td>Ngày đi</td>
                                 <td>Ngày về</td>
-                                <td>Chuyến bay đi</td>
+                    
                                 <td>Giời đi</td>
                                 <td>Giờ đến</td>
                                 <td>Số chỗ còn nhận</td>
@@ -24,13 +24,13 @@
                               	<tr>                          
                                 <td class="titleT"><?php echo $diemkhoihanh[$one['id_diem_khoi_hanh']].'-'. $diemden[$one['id_diem_den']]; ?></td>
                                 <td><?php echo $one['so_ngay']?></td>
-                                <td><?php echo $one['gia_tour']."Đ"?></td>
-                                <td><?php echo $one['ngay_di']?></td>
-                                <td><?php echo $one['ngay_ve']?></td>
-                                <td><?php echo $one['ma_so_phuong_tien']?></td>
-                                <td><?php echo $one['gio_di']?></td>
-                                <td><?php echo $one['gio_den']?></td>
-                                <td>9<br /><a href="#" class="bntB2">Đặt tour</a></td>
+                                <td><?php echo number_format($one['gia_tour'],0,'','.')?></td>
+                                <td><?php echo date('d-m-Y',$one['ngay_di'])?></td>
+                                <td><?php echo date('d-m-Y',$one['ngay_ve'])?></td>
+                               
+                                <td><?php echo date('H:i',$one['gio_di'])?></td>
+                                <td><?php echo date('H:i',$one['gio_den'])?></td>
+                                <td>9<br /><a href="javascript:order_tour(<?php echo $one['id']?>)" style="color:white" class="bntB2">Đặt tour</a></td>
                               </tr>
                               <?php } }?>
                            
@@ -38,8 +38,20 @@
 
                         </div>
                         
-                        <div class="pageNum alignR padT20"><a href="#" class="active">1</a>   <a href="#">2</a>   <a href="#">3</a>   <a href="#">4</a>.... <a href="#">7</a> <a href="#">>></a></div>
-                    
+                        <div class="pageNum alignR padT20">
+                        	<ul id="pagination-digg">
+                    		<?php for($i = 1; $i <= $countTour; $i ++){?>
+                    			<?php if($i == $page){?>
+                    			<li class="active"><?php echo $i?></li>
+                    			<?php }else{?>
+                    			<li><a href="?page=<?php echo $i?>"><?php echo $i?></a></li>
+                    			<?php }?>
+                    		<?php }?>
+</ul>
+                        </div>
+                    <?php }else{?>
+                    <h2 align="center" style="color:red">Không Có Dữ Liệu</h2>
+                    <?php }?>
                     </div>	
                 
                 </div>

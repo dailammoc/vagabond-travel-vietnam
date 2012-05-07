@@ -2,7 +2,7 @@ Options -Indexes
 RewriteEngine on
 
 #other
-RewriteRule \.(css|jpe?g|gif|png|js|swf|php|html)$ - [L]
+RewriteRule \.(css|jpe?g|gif|png|js|swf|php|html|doc)$ - [L]
 RewriteRule 	^.*$ 						index.php [L]
 RewriteRule 	^enterprise.*$ 						enterprise/index.php [L]
 RewriteRule    ^huong-dan$         			help/tour.php   [L]

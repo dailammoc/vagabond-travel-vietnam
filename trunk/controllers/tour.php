@@ -23,7 +23,18 @@ class Tour_Controller extends HKL_Controller{
 	}
 	public function nuocngoai()
 	{
-		$tour = $this -> tourModel -> getTourByLoaiTour(2);
+		$page = intval($_GET['page']);
+		$pagesize = 20;
+		if($page > 1)
+			$offset = ($page - 1) * $pagesize;
+		else 
+			$offset = 0;
+		if(!$page > 0)
+			$page = 1;
+		
+		$countTour = $this -> tourModel -> countTourByLoaiTour(2);
+		$countTour = ceil($countTour/$pagesize);
+		$tour = $this -> tourModel -> getTourByLoaiTour(2,$offset,$pagesize);
 		$diemkhoihanh = $this -> tourModel -> getDiemKhoiHanh();
 		$diemkhoihanh = array_combine(Utility::GetColumn($diemkhoihanh,'id'), Utility::GetColumn($diemkhoihanh,'ten_dia_diem'));
 		$diemden = $this -> tourModel -> getDiemDen();
@@ -40,7 +51,9 @@ class Tour_Controller extends HKL_Controller{
 			$offset = 0;
 		if(!$page > 0)
 			$page = 1;
+		
 		$countTour = $this -> tourModel -> countTourByLoaiTour(3);
+		$countTour = ceil($countTour/$pagesize);
 		$tour = $this -> tourModel -> getTourByLoaiTour(3,$offset,$pagesize);
 		$diemkhoihanh = $this -> tourModel -> getDiemKhoiHanh();
 		$diemkhoihanh = array_combine(Utility::GetColumn($diemkhoihanh,'id'), Utility::GetColumn($diemkhoihanh,'ten_dia_diem'));
@@ -51,6 +64,10 @@ class Tour_Controller extends HKL_Controller{
 	public function chitiet($id)
 	{
 		$tour = $this -> tourModel -> getTourById($id);
+		if($tour['id_loai_tour'] == 2)
+			$link = URL_HOME.'/tour/nuocngoai';
+		if($tour['id_loai_tour'] == 3)
+			$link = URL_HOME.'/tour/trongnuoc';
 		$loai_tour = $this -> tourModel -> getLoaiTourById($tour['id_loai_tour']);
 		$diemkhoihanh = $this -> tourModel -> getDiemKhoiHanhById($tour['id_diem_khoi_hanh']);
 		$diemden = $this -> tourModel -> getDiemDenById($tour['id_diem_den']);
@@ -59,7 +76,39 @@ class Tour_Controller extends HKL_Controller{
 	}
 	public function search($diemkhoihanh,$diemden)
 	{
-		$tour = $this -> tourModel -> search($diemkhoihanh, $diemden);
+		$page = intval($_GET['page']);
+		$pagesize = 20;
+		if($page > 1)
+			$offset = ($page - 1) * $pagesize;
+		else 
+			$offset = 0;
+		if(!$page > 0)
+			$page = 1;
+		$countTour = $this -> tourModel -> countTourBySearch($diemkhoihanh, $diemden);
+		$countTour = ceil($countTour/$pagesize);
+		$tour = $this -> tourModel -> search($diemkhoihanh, $diemden,$offset,$pagesize);
+		if(count($tour) > 0){			
+			$diemkhoihanh = $this -> tourModel -> getDiemKhoiHanh();
+			$diemkhoihanh = array_combine(Utility::GetColumn($diemkhoihanh,'id'), Utility::GetColumn($diemkhoihanh,'ten_dia_diem'));
+			$diemden = $this -> tourModel -> getDiemDen();
+			$diemden = array_combine(Utility::GetColumn($diemden,'id'), Utility::GetColumn($diemden,'ten_dia_diem'));
+		}
+		include(DIR_VIEW_ENTERPRISE.'/tour/search_result.html');
+	}
+	public function searchTitle($title)
+	{
+		$page = intval($_GET['page']);
+		$pagesize = 20;
+		if($page > 1)
+			$offset = ($page - 1) * $pagesize;
+		else 
+			$offset = 0;
+		if(!$page > 0)
+			$page = 1;
+			
+		$countTour = $this -> tourModel -> countTourBySearchTitle($title);
+		$countTour = ceil($countTour/$pagesize);
+		$tour = $this -> tourModel -> searchTitle($title,$offset,$pagesize);
 		if(count($tour) > 0){			
 			$diemkhoihanh = $this -> tourModel -> getDiemKhoiHanh();
 			$diemkhoihanh = array_combine(Utility::GetColumn($diemkhoihanh,'id'), Utility::GetColumn($diemkhoihanh,'ten_dia_diem'));

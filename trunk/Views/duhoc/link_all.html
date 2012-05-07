@@ -1,0 +1,32 @@
+<?php $this->load->view("header/header.html")?>
+                <div class="content minHeight">
+             
+                <!-- blog services -->
+                <h4 class="titleALl"></h4>
+                <?php foreach($link as $index => $one) {?>
+                	<div class="blogSer">
+                	
+                    <div class="picTour"></div>
+                    <div class="infoTour">
+                    	<div class="title"><a href="<?php echo URL_HOME?>/duhoc/quocte/link/<?php echo $one['id']?>/duhoc"><?php echo $one['description']?> </a></div>
+<!--                        <div class="txt"><?php echo $one['content']?></div>-->
+						
+                    </div>  
+                </div>
+                <?php } ?>
+   
+               
+                <!-- en blog services -->
+                
+                </div>
+            
+			</div>
+            <!-- en main left -->
+            
+            <!-- main right -->
+            <?php $this->load->view("menu/right_side.html")?>
+                
+	<!-- en bodymain -->
+    
+    <!-- footer -->
+	<?php $this->load->view ("footer/footer.html")?>

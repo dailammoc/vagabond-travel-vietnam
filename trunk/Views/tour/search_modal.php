@@ -42,7 +42,7 @@
                               	<tr>                          
                                 <td class="titleT"><?php echo $diemkhoihanh[$one['id_diem_khoi_hanh']].'-'. $diemden[$one['id_diem_den']]; ?></td>
                                 <td><?php echo $one['so_ngay']?></td>
-                                <td><?php echo $one['gia_tour']."Đ"?></td>
+                                <td><?php echo number_format($one['gia_tour'],0,'','.')?></td>
                                 <td><?php echo date('d-m-Y',$one['ngay_di'])?></td>
                                 <td><?php echo date('d-m-Y',$one['ngay_ve'])?></td>
                                 <td><?php echo $one['ma_so_phuong_tien']?></td>
